@@ -7,50 +7,134 @@
     <title>About Me</title>
   </head>
   <body>
-    <header>
-      <div class="brand">Your Name</div>
-      <nav>
-        <a class="btn btn--outline" href="#about">About</a>
-        <a class="btn" href="#contact">Contact</a>
+    <nav class="nav">
+      <a class="brand">
+        <span>Iglesia</span>
+      </a>
+        <ul class="links">
+          <li>
+            <a href="#home">Home</a>
+          </li>
+          <li>
+            <a href="#about">About</a>
+          </li>
+          <li>
+            <a href="projects">Projects</a>
+          </li>
+          <li>
+            <a href="#contact">Contact</a>
+          </li>
+        </ul>
       </nav>
-    </header>
 
     <main>
-      <section id="about">
-        <h1>About Me</h1>
-        <p class="greeting">
-          Hi! I’m [Your Name], a [your role or what you do]. I enjoy building
-          simple, useful things on the web and learning new technologies.
-        </p>
-
-        <h2>Interests & Skills</h2>
-        <div class="grid">
-          <div class="card">
-            <strong>Interest/Skill #1</strong>
-            <p>Short description of what you like or what you’re good at.</p>
-          </div>
-          <div class="card">
-            <strong>Interest/Skill #2</strong>
-            <p>Short description of tools, topics, or domains you enjoy.</p>
-          </div>
-          <div class="card">
-            <strong>Interest/Skill #3</strong>
-            <p>Short description of experience, projects, or strengths.</p>
-          </div>
+      <section class="home">
+        <img src="https://imgcdn.stablediffusionweb.com/2024/5/16/e7b18099-7e81-4658-959e-06589f60eae9.jpg"  alt="profile photo" />
+        <div class="info-box">
+          <h1>
+            <span>Hello, I am Iglesia</span>
+          </h1>
+          <h3>
+            <span>A Front-end Developer based in Denmark</span>
+          </h3>
+          <p>
+            I am an aspiring travel specialist transitioning into a tech career
+            with a passion for creating intuitive and visually engaging digital
+            experiences. Currently living in Denmark, I am actively expanding my
+            skills through hands-on projects, online courses, and a commitment
+            to continuous learning. My focus is on mastering key front-end
+            technologies like HTML, CSS, JavaScript, and modern frameworks such
+            as React and Vue.js.
+          </p>
+        </div>
+        </section>
+        <section class="about">
+          <div class="about-box">
+            <div class="about-info">
+              <h1>
+                <span>About me👩🏽‍💻</span>
+              </h1>
+              <p>
+                In my free time, I love drawing and visiting places with my
+                family. I’m passionate about web developing and my goal is to
+                help clients by creating seamless and visually appealing
+                websites.
+              </p>
+            </div>
+        <h2>
+        <span>Interests & Skills</span>
+      </h2>
+        <div class="skills">
+          <ul>
+            <li><span>HTML</span></li>
+            <li><span>CSS</span></li>
+            <li><span>JS</span></li>
+            <li><span>Git</span></li>
+            <li><span>Python</span></li>
+            <li><span>VSCode</span></li>
+          </ul>
+          
         </div>
       </section>
+      <section class="projects">
+        <h1>
+          <span>Projects</span>
+        </h1>
 
-      <section id="contact" style="margin-top: 32px">
+  <div class="card-grid">
+    <article class="card">
+      <a class="card-media" href="#project-1" aria-label="View Project 1">
+        <img src="" alt="Screenshot of Project 1">
+      </a>
+      <div class="card-body">
+        <h3 class="card-title">Project One</h3>
+        <p class="card-desc">Short one‑sentence description of what the project does and the tech used.</p>
+        <div class="card-actions">
+          <a class="btn" href="#project-1">View Project</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <a class="card-media" href="#project-2" aria-label="View Project 2">
+        <img src="" alt="Screenshot of Project 2">
+      </a>
+      <div class="card-body">
+        <h3 class="card-title">Project Two</h3>
+        <p class="card-desc">Brief description highlighting the problem solved or feature set.</p>
+        <div class="card-actions">
+          <a class="btn btn--outline" href="#project-2">View Project</a>
+        </div>
+      </div>
+    </article>
+
+
+    <article class="card">
+      <a class="card-media" href="#project-3" aria-label="View Project 3">
+        <img src="" alt="Screenshot of Project 3">
+      </a>
+      <div class="card-body">
+        <h3 class="card-title">Project Three</h3>
+        <p class="card-desc">One line about the outcome, results, or what you learned.</p>
+        <div class="card-actions">
+          <a class="btn" href="#project-3">View Project</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+      <section class="contact" style="margin-top: 32px">
         <h2>Contact</h2>
         <p>Want to get in touch? Click below or email me directly.</p>
         <a class="btn" href="mailto:you@example.com">Email Me</a>
       </section>
     </main>
 
-    <footer>© <span id="year"></span> Your Name</footer>
+    <footer><small>© <span id="year"></span> Coded with ❤ by Iglesia G. Desta</small></footer>
 
     <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
+      
     </script>
   </body>
 </html>
