@@ -171,3 +171,12 @@ footer {
   border-top: 1px solid #e5e7eb;
   margin-top: 32px;
 }
+
+@media (max-width: 600px) {
+  .nav li {
+    display: none;
+  }
+  .info-box {
+    margin: auto;
+  }
+}
