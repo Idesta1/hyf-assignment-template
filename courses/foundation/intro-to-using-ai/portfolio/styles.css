@@ -4,6 +4,15 @@ body {
   line-height: 1.6;
   background-color: rgb(213, 233, 185);
 }
+
+.pink {
+  background: rgb(243, 195, 205);
+}
+
+.pink a {
+  color: white;
+}
+
 nav {
   position: fixed;
   top: 0px;
@@ -45,6 +54,12 @@ nav {
 .home img {
   width: 200px;
   border-radius: 50%;
+}
+
+.theme-btn {
+  background-color: #e5e7eb;
+  padding: 8px 14px;
+  border-radius: 6px;
 }
 
 .info-box {
