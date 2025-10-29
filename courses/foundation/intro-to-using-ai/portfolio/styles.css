@@ -86,8 +86,9 @@ main {
 }
 .skills ul {
   display: flex;
-  flex-direction: column;
-  align-items: baseline;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
   font-weight: 700px;
 }
 
