@@ -60,6 +60,7 @@ nav {
   background-color: #e5e7eb;
   padding: 8px 14px;
   border-radius: 6px;
+  cursor: pointer;
 }
 
 .info-box {
