@@ -55,7 +55,7 @@
         <option>30</option>
         <option>31</option>
       </select>
-      <input type="number" id="birthyear" placeholder="Enter your DOB.." />
+      <input type="number" id="birth-year" placeholder="Enter your DOB.." />
     </div>
     <div>
       <label>Age at the Date of</label>
@@ -108,16 +108,34 @@
       </select>
       <input
         type="number"
-        id="yearFuture"
+        id="future-year"
         placeholder="Enter future year.."
         default="2050"
       />
       <button class="btn">Calculate</button>
     </div>
-    <h3>future age</h3>
+    <h3></h3>
     <script>
-      let yearOfBirth = document.getElementById("");
-      let yearFuture = document.getElementById("");
+      document.addEventListener("DOMContentLoaded", function () {
+        let calculateButton = document.querySelector(".btn");
+
+        if (calculateButton) {
+          calculateButton.addEventListener("click", calculateAge);
+        }
+        function calculateAge() {
+          let yearOfBirth = document.getElementById("birth-year").value;
+          let yearFuture = document.getElementById("future-year").value;
+          const age = yearFuture - yearOfBirth;
+
+          let h3 = document.querySelector("h3");
+          h3.innerHTML =
+            "🎉Hurry In the year " +
+            yearFuture +
+            ", you will be " +
+            age +
+            " years old!";
+        }
+      });
     </script>
   </body>
 </html>
