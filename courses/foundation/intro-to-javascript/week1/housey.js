@@ -1,12 +1,37 @@
-let volumeInMeters = prompt("what is the volume in meter?");
-let gardenSizeInM2 = prompt("what is the garden size in m2?");
-let estimateCost = prompt("How much is the estimated cost?");
-const housePrice = volumeInMeters * 2.5 * 1000 + gardenSizeInM2 * 300;
+//peter's estimate
 
-if (housePrice > estimateCost) {
-  alert("Good deal paying too little");
-} else if (housePrice < estimateCost) {
-  alert("paying too much");
-} else {
-  alert("its the right price");
+const peterWidth = 8;
+const peterDepth = 10;
+const peterHeight = 10;
+
+const peterGardenSizeInM2 = 100;
+const peterHouseCosts = 25000000;
+const peterVolumeInMeters = peterWidth * peterDepth * peterHeight;
+const peterHousePrice =
+  peterVolumeInMeters * 2.5 * 1000 + peterGardenSizeInM2 * 300;
+
+if (peterHouseCosts > peterHousePrice) {
+  console.log("You are paying more");
+} else if (peterHouseCosts < peterHousePrice);
+{
+  console.log("You are paying less");
+}
+
+//Julia's estimate
+
+const juliaWidth = 8;
+const juliaDepth = 10;
+const juliaHeight = 10;
+
+const juliaGardenSizeInM2 = 100;
+const juliaHouseCosts = 25000000;
+const juliaVolumeInMeters = juliaWidth * juliaDepth * juliaHeight;
+const juliaHousePrice =
+  juliaVolumeInMeters * 2.5 * 1000 + juliaGardenSizeInM2 * 300;
+
+if (juliaHouseCosts > juliaHousePrice) {
+  console.log("You are paying more");
+} else if (juliaHouseCosts < juliaHousePrice);
+{
+  console.log("You are paying less");
 }
