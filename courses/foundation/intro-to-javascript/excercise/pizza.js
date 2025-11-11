@@ -1,7 +1,7 @@
-let favoritePizza = "margarita";
+const favoritePizza = "margarita";
 let margaritaPrice = 100;
 let pizzaCount = 5;
-let takeAway = false;
+let takeAway = true;
 
 const totalPrice = margaritaPrice * pizzaCount;
 

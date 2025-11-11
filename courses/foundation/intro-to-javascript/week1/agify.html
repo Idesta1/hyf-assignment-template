@@ -60,8 +60,8 @@
         font-size: small;
       }
     </style>
-    </head>
-    <body>
+  </head>
+  <body>
     <header>
       <h1>Agi-fy(Future Age Calculator)</h1>
     </header>
@@ -178,17 +178,17 @@
       <h3></h3>
       <script>
         document.addEventListener("DOMContentLoaded", function () {
-          let calculateButton = document.querySelector(".btn");
+          const calculateButton = document.querySelector(".btn");
 
           if (calculateButton) {
             calculateButton.addEventListener("click", calculateAge);
           }
           function calculateAge() {
-            let yearOfBirth = document.getElementById("birth-year").value;
-            let yearFuture = document.getElementById("future-year").value;
+            const yearOfBirth = document.getElementById("birth-year").value;
+            const yearFuture = document.getElementById("future-year").value;
             const age = yearFuture - yearOfBirth;
 
-            let h3 = document.querySelector("h3");
+            const h3 = document.querySelector("h3");
             h3.innerHTML =
               "🎉Hurry In the year " +
               yearFuture +

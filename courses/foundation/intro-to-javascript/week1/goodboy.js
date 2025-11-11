@@ -1,18 +1,13 @@
-let dogYearOfBirth = 2010;
-let dogYearFuture = 2025;
-let dogHumanYear = dogYearFuture - dogYearOfBirth;
+const yearOfBirth = 2010;
+const yearFuture = 2025;
+const age = yearFuture - yearOfBirth;
 const shouldShowResultInDogYears = true;
-const dogYearsEquivalent = dogHumanYear * 7;
+const dogYearsEquivalent = age * 7;
 
 if (shouldShowResultInDogYears) {
   console.log(
-    "Your dog will be " +
-      dogYearsEquivalent +
-      " dog years old in " +
-      dogYearFuture
+    "Your dog will be " + dogYearsEquivalent + " dog years old in " + yearFuture
   );
-} else if (dogHumanYear) {
-  console.log(
-    "Your dog will be " + dogHumanYear + " human years old in " + dogYearFuture
-  );
+} else if (age) {
+  console.log("Your dog will be " + age + " human years old in " + yearFuture);
 }
