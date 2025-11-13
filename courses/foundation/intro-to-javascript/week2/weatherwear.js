@@ -3,9 +3,9 @@ function whatToWear(temperature) {
   const summer = `t-shirt , shorts and summer-dress`; //using template literals
 
   if (temperature >= 17) {
-    return "You can wear" + " " + summer;
+    return `You can wear ${summer}`;
   } else if (temperature < 17) {
-    return "You can wear" + " " + winter;
+    return `You can wear ${winter}`;
   } else {
     return "You can always decide what to wear";
   }
