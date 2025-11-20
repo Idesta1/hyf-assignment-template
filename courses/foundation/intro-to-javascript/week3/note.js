@@ -1,3 +1,4 @@
+// save a note
 const notes = [];
 function saveNote(content, id) {
   notes.push({ content: content, id: id });
