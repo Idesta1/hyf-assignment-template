@@ -9,10 +9,14 @@ const names = [
   "Katrine",
   "Tala",
 ];
-const nameToRemove = "Ahmad";
 
-names.splice(1, 1);
+const namesToRemove = "Ahmed";
+const index = names.indexOf(namesToRemove);
 
+if (index !== -1) {
+  names.splice(index, 1);
+}
+console.log(names.splice(1, 1));
 console.log(names); // ['Peter', 'Yana', 'kristina', 'Rasmus', 'Samuel', 'Katrine', 'Tala']
 
 //When will we be there??

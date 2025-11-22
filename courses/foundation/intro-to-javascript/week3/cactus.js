@@ -1,17 +1,17 @@
 // add activity using date, activity and duration parameters.
 const activities = [];
-
-function addActivity(date, activity, duration) {
+const date = new Date().toISOString().split("T")[0];
+function addActivity(activity, duration) {
   activities.push({
-    date: (date = new Date().toISOString().split("T")[0]),
+    date: date,
     activity: activity,
     duration: duration,
   });
 }
 
-console.log(addActivity("", "YouTube", 20));
-console.log(addActivity("", "Instagram", 40));
-console.log(addActivity("", "Duolingo", 10));
+console.log(addActivity("YouTube", 20));
+console.log(addActivity("Instagram", 40));
+console.log(addActivity("Duolingo", 10));
 
 console.log(activities);
 console.log(showStatus());
@@ -25,13 +25,12 @@ function showStatus() {
     totalDuration += activities[i].duration;
   }
 
-  if (activities.length === 0) {
+  if (activities.length === 0)
     return "Add some activities before calling showStatus";
-  } else if (totalDuration >= 90) {
+  if (totalDuration >= 90)
     return `You have reached your limit, no more activities for you!`;
-  } else {
+  if (activities.length !== 0 && totalDuration < 90)
     return `You have added ${activities.length} activities on ${activities[0].date}, which totals to  ${totalDuration} minutes.`;
-  }
 }
 
 console.log(showStatus());
