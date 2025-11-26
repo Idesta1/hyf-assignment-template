@@ -2,7 +2,7 @@ function getReply(command) {
   const text = {};
   const greetingPrefix = "Hello my name is ";
   const todos = [];
-  const user_name = "Iglesia";
+  const user_name = "Benjamin";
 
   if (command.startsWith(greetingPrefix)) {
     const name = command.slice(greetingPrefix.length).trim();
@@ -32,18 +32,21 @@ function getReply(command) {
     } catch (e) {
       text.reply = "Sorry, I can't compute that";
     }
-  } else if (command.startsWith("set a timer for ")) {
+  } else if (command.toLowerCase().startsWith("set a timer for ")) {
     const timePart = command.slice(16);
     const timeComponents = timePart.split(" ");
     const duration = parseInt(timeComponents[0]);
     const unit = timeComponents[1];
     let milliseconds = 0;
+
     if (unit.startsWith("second")) {
       milliseconds = duration * 1000;
     } else if (unit.startsWith("minute")) {
       milliseconds = duration * 60 * 1000;
     } else if (unit.startsWith("hour")) {
       milliseconds = duration * 60 * 60 * 1000;
+    } else {
+      return "Invalid time unit specified";
     }
     setTimeout(() => {
       console.log("Timer done");
@@ -62,4 +65,4 @@ console.log(getReply("Remove fishing from my todo"));
 console.log(getReply("What is on my todo?"));
 console.log(getReply("What day is it today?"));
 console.log(getReply("What is 3 + 9"));
-console.log(getReply("Set a timer for 4 minutes"));
+console.log(getReply("set a timer for 4 minutes"));
