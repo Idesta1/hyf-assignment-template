@@ -22,6 +22,7 @@ function getReply(command) {
   }
   if (command === "What day is it today?") {
     const date = new Date().toLocaleDateString("en-GB", {
+      //added toLocaleDateString for proper formatting
       weekday: "long",
       year: "numeric",
       month: "long",
