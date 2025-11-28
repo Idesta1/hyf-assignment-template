@@ -1,38 +1,45 @@
 function getReply(command) {
-  const text = {};
-  const greetingPrefix = "Hello my name is ";
   const todos = [];
-  const user_name = "Benjamin";
 
-  if (command.startsWith(greetingPrefix)) {
-    const name = command.slice(greetingPrefix.length).trim();
-    text.reply = `Nice to meet you ${
-      name.charAt(0).toUpperCase() + name.slice(1)
-    }`;
-  } else if (command === "What is my name?") {
-    text.reply = `Your name is ${user_name}!`;
-  } else if (command.startsWith("Add")) {
+  if (command.startsWith("Hello my name is ")) {
+    const name = command.slice("Hello my name is ".length).trim();
+    return `Nice to meet you ${name.charAt(0).toUpperCase() + name.slice(1)}`;
+  }
+  if (command === "What is my name?") {
+    return `Your name is Benjamin!`;
+  }
+  if (command.startsWith("Add")) {
     const item = command.slice(4, command.indexOf("to my todo")).trim();
     todos.push(item);
-    text.reply = `${item} added to your todo`;
-  } else if (command.startsWith("Remove ")) {
+    return `${item} added to your todo`;
+  }
+  if (command.startsWith("Remove ")) {
     const item = command.slice(7, command.indexOf(" from my todo")).trim();
-    const index = todos.indexOf(item);
-    text.reply = `Removed ${item} from your todo`;
-  } else if (command === "What is on my todo?" && todos.length >= 0) {
-    text.reply = `You have ${todos.length} todos`;
-  } else if (command === "What day is it today?") {
-    const date = new Date();
-    text.reply = `Today it is ${date}`;
-  } else if (command.startsWith("What is ")) {
-    const expression = command.slice(8);
+    return `Removed ${item} from your todo`;
+  }
+  if (command === "What is on my todo?" && todos.length >= 0) {
+    return `You have ${todos.length} todos`;
+  }
+  if (command === "What day is it today?") {
+    const date = new Date().toLocaleDateString("en-GB", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+    return `Today it is ${date}`;
+  }
+  if (command.startsWith("What is ")) {
+    const expression = command.slice(8).trim(); //added trim to remove extra spaces
     try {
       const result = Function(`'use strict'; return(${expression})`)();
-      text.reply = `The answer is ${result}`;
+      return `The answer is ${result}`;
     } catch (e) {
-      text.reply = "Sorry, I can't compute that";
+      return "Sorry, I can't compute that";
     }
-  } else if (command.toLowerCase().startsWith("set a timer for ")) {
+  }
+
+  if (command.toLowerCase().startsWith("set a timer for ")) {
     const timePart = command.slice(16);
     const timeComponents = timePart.split(" ");
     const duration = parseInt(timeComponents[0]);
@@ -51,10 +58,10 @@ function getReply(command) {
     setTimeout(() => {
       console.log("Timer done");
     }, milliseconds);
-    text.reply = `Timer set for ${duration} ${unit}`;
+    return `Timer set for ${duration} ${unit}`;
   }
 
-  return text.reply;
+  return;
 }
 
 console.log(getReply("Hello my name is Benjamin"));
@@ -64,5 +71,5 @@ console.log(getReply("Add singing in the shower to my todo"));
 console.log(getReply("Remove fishing from my todo"));
 console.log(getReply("What is on my todo?"));
 console.log(getReply("What day is it today?"));
-console.log(getReply("What is 3 + 9"));
+console.log(getReply("What is       + 3"));
 console.log(getReply("set a timer for 4 minutes"));
