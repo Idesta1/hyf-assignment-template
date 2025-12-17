@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node courses/foundation/intro-to-backend/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "exercise1": "nodemon exercise1.js",
-    "exercise2": "nodemon exercise2.js"
+    "exercise2": "nodemon exercise2.js",
+    "index": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
