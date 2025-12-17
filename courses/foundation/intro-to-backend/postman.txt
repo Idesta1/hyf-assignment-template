@@ -1,0 +1,13 @@
+ Practice using Postman
+
+1- Get 5 random dog images (any breed)
+
+2- List all the dog breeds
+
+3- Get 3 dog images from the "beagle" breed
+
+4- List all the sub-breeds of the poodle
+
+5- Get all the dog images from the "toy poodle" sub breed
+
+https://www.postman.com/avionics-candidate-53489866/my-workspace/collection/h6up42g/dogapi?action=share&creator=24259017
