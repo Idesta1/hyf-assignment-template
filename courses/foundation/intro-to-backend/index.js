@@ -17,22 +17,36 @@ app.use(express.json());
 
 // Basic route to check server status
 app.get("/", (req, res) => {
-  res.send("Hello! This is the Intro to Backend course exercise. Use the endpoints to interact with the database.");
+  res.send(
+    "Hello! This is the Intro to Backend course exercise. Use the endpoints to interact with the database."
+  );
 });
 
 // Route to get all tasks
-app.get("/tasks", async (req, res) => {
-  const tasks = await knexInstance.raw("SELECT * FROM task");
+async function getAllTasks() {
+  return await knexInstance.select("*").from("task");
+}
+
+app.get("/all-tasks", async (req, res) => {
+  const tasks = await getAllTasks();
   res.json(tasks);
 });
 
 // Route to get all users
+async function getAllUsers() {
+  return await knexInstance.select("*").from("user");
+}
+
 app.get("/users", async (req, res) => {
-  const users = await knexInstance.raw("SELECT * FROM user");
+  const users = await getAllUsers();
   res.json(users);
 });
 
 // Route to add a new user
+async function addUser(name, email) {
+  return await knexInstance("user").insert({ name, email });
+}
+
 app.post("/users", async (req, res) => {
   const { name, email } = req.body;
   console.log(req.body);
@@ -40,21 +54,33 @@ app.post("/users", async (req, res) => {
     return res.status(400).send("Name and email are required.");
   }
 
-  await knexInstance("user")
-    .insert({ name, email })
-    .then(() => {
-      res.status(201).send("User added successfully.");
-    })
-    .catch((err) => {
-      res.status(500).send("Error adding user.");
-    });
+  await addUser(name, email);
+  res.status(201).send("User added successfully.");
 });
 
 // Route to get user count with styled HTML response
+async function getUserCount() {
+  try {
+    const userCountResult = await knexInstance.raw(
+      "SELECT COUNT(*) AS count FROM user"
+    );
+    return userCountResult;
+  } catch (error) {
+    console.error("Error fetching user count:", error);
+    return { count: 0 };
+  }
+}
+
 app.get("/user-count", async (req, res) => {
-  const result = await knexInstance.raw("SELECT COUNT(*) AS count FROM user");
-  res.send(`
-    <html>
+  const userCountResult = await getUserCount();
+  const page = renderUserCountPage(userCountResult);
+  res.send(page);
+});
+
+function renderUserCountPage(userCountResult) {
+  const count = userCountResult[0].count;
+  return `
+      <html>
     <head>
     <title>User Count</title>
     <style>
@@ -79,25 +105,28 @@ app.get("/user-count", async (req, res) => {
         </head>
     <body>
       <h1>Database for User Count🎄</h1>
-      <h3>The total users are <strong>${result[0].count}!</strong></h3>
+      <h3>The total users are <strong>${count}!</strong></h3>
       </body>
     </html>
-  `);
-});
+  `;
+}
 
 // Route to delete a user by ID
 app.delete("/users/:id", async (req, res) => {
-  const { id } = req.params
-  await knexInstance("user")
-    .where({ id })
-    .del()
-    .then(() => {
-      res.send(`User with ID ${id} deleted successfully.`)
-      })
-      .catch((err) => {
-        res.status(500).send("Error deleting user.")
-        })
-        });
+  const { id } = req.params;
+  try {
+    const deletedUser = await knexInstance("user").where({ id }).delete();
+
+    if (deletedUser === 0) {
+      return res.status(404).send(`User with ID ${id} not found.`);
+    }
+
+    res.send(`User with ID ${id} deleted successfully.`);
+  } catch (error) {
+    res.status(500).send("An error occurred while deleting the user.");
+    console.error(error);
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
