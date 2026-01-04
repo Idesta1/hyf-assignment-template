@@ -61,24 +61,21 @@ app.post("/users", async (req, res) => {
 // Route to get user count with styled HTML response
 async function getUserCount() {
   try {
-    const userCountResult = await knexInstance.raw(
-      "SELECT COUNT(*) AS count FROM user"
-    );
-    return userCountResult;
+    const result = await knexInstance("user").count("id as count");
+    const count = result && result[0] && result[0].count ? Number(result[0].count) : 0;
+    return count;
   } catch (error) {
     console.error("Error fetching user count:", error);
-    return { count: 0 };
+    return 0;
   }
 }
 
 app.get("/user-count", async (req, res) => {
-  const userCountResult = await getUserCount();
-  const page = renderUserCountPage(userCountResult);
+  const usersCount = await getUserCount();
+  const page = renderUserCountPage(usersCount);
   res.send(page);
 });
-
-function renderUserCountPage(userCountResult) {
-  const count = userCountResult[0].count;
+function renderUserCountPage(usersCount) {
   return `
       <html>
     <head>
@@ -105,7 +102,7 @@ function renderUserCountPage(userCountResult) {
         </head>
     <body>
       <h1>Database for User Count🎄</h1>
-      <h3>The total users are <strong>${count}!</strong></h3>
+      <h3>The total users are <strong>${usersCount}!</strong></h3>
       </body>
     </html>
   `;
