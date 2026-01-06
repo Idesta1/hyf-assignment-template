@@ -1,26 +1,4 @@
-//Hogwarts house generator
-// let username;
-// let houses = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"];
 
-// function shuffle(array) {
-//   for (let i = array.length - 1; i > 0; i--) {
-//     const j = Math.floor(Math.random() * (i + 1));
-//     [array[i], array[j]] = [array[j], array[i]];
-//   }
-// }
-
-// const button = document.createElement("button");
-// button.innerText = "Submit";
-// button.id = "my-button";
-// document.body.appendChild(button);
-// document.getElementById("my-button").onclick = function () {
-//   username = document.getElementById("input-name").value;
-
-//   shuffle(houses);
-
-//   let message = `${username} belongs in House of, ${houses[0]}!`;
-//   document.getElementById("myP").textContent = message;
-// };
 
 // Hogwarts house generator
 // create an h1,label,input,button and p element using createElement.
