@@ -7,6 +7,7 @@ const labelElement = document.createElement("label");
 const inputElement = document.createElement("input");
 const button = document.createElement("button");
 const para = document.createElement("p");
+const image = document.createElement("img");
 
 h1Element.textContent = "Hogwarts House generator";
 labelElement.textContent = "Username:";
@@ -29,6 +30,7 @@ document.body.append(h1Element, labelElement, inputElement, button, para);
 let username;
 const houses = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"];
 
+//function to shuffle the houses array to get random house assignment
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -40,6 +42,15 @@ button.onclick = function () {
   username = document.getElementById("name-input").value;
   shuffle(houses);
 
-  let message = `${username} belongs in House of, ${houses[0]}!`;
+  //function to assign house based on username input
+  function assignHouse() {
+    if (!username) {
+      return "Please enter your name!";
+    } else {
+      return `${username} belongs in House of, ${houses[0]}!`;
+    }
+  }
+
+  const message = assignHouse();
   document.getElementById("myP").textContent = message;
 };
