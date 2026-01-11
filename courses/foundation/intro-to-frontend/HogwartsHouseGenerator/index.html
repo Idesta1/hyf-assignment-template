@@ -6,12 +6,21 @@
     <title>Hogwarts House generator</title>
   </head>
   <body>
-    <img
-      src="https://www.joe-rainey.com/wp-content/uploads/2023/02/pngegg-600x648.png.webp"
-      alt="Hogwarts Logo"
-      width="100"
-    />
-
+    <div class="Container"></div>
+    <h1>Hogwarts House generator</h1>
+ 
+    <label for="username">Username:</label>
+    <input id ="username" type="text" placeholder="Enter your name.."/>
+    <button id="getHouseBtn">Get a House</button>
+    <button id ="retryBtn" class="hidden">Try Again</button>
+   
+    <p id="houseResult" class="error hidden"></p>
+    
+    <h2 id="houseName"></h2>
+    <p id ="houseDescription"></p>
+    <img id="houseImage" alt="house-image"/>
+    
+  </div>
     <script src="hogwarts.js"></script>
   </body>
 </html>

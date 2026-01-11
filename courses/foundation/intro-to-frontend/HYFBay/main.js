@@ -11,11 +11,11 @@ function renderProducts(products) {
   products.forEach((product) => {
     const li = document.createElement("li");
     li.innerText = `Item: ${product.name} - Price: $${product.price} - Rating: ${product.rating}/10`;
-    li.style.marginLeft = "30px";
-    li.style.marginBottom = "10px";
-    li.style.listStyleType = "none";
-    li.style.marginTop = "20px";
-    li.style.backgroundColor = "lightyellow";
+    // li.style.marginLeft = "30px";
+    // li.style.marginBottom = "10px";
+    // li.style.listStyleType = "none";
+    // li.style.marginTop = "20px";
+
     ul.appendChild(li);
   });
 }

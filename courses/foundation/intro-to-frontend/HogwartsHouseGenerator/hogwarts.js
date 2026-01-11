@@ -1,56 +1,61 @@
-// Hogwarts house generator
-// create an h1,label,input,button and p element using createElement.
-// used append instead of appendChild to make my code compact and add multiple items at once.
-// added style
-const h1Element = document.createElement("h1");
-const labelElement = document.createElement("label");
-const inputElement = document.createElement("input");
-const button = document.createElement("button");
-const para = document.createElement("p");
-const image = document.createElement("img");
+const houses = [
+  {
+    name: "Gryffindor",
+    description: "Valued bravery, daring, nerve, and chivalry.",
+    image: "https://picsum.photos/400/250?random=4",
+  },
+  {
+    name: "Hufflepuff",
+    description:
+      "Valued hard work, dedication, patience, loyalty, and fair play.",
+    image: "https://picsum.photos/400/250?random=1",
+  },
+  {
+    name: "Ravenclaw",
+    description:
+      "Valued intelligence, knowledge, curiosity, creativity and wit.",
+    image: "https://picsum.photos/400/250?random=2",
+  },
+  {
+    name: "Slytherin",
+    description:
+      "Valued ambition, leadership, self-preservation, cunning and resourcefulness.",
+    image: "https://picsum.photos/400/250?random=3",
+  },
+];
 
-h1Element.textContent = "Hogwarts House generator";
-labelElement.textContent = "Username:";
+//DOM elements
+const usernameInput = document.getElementById("username");
+const getHouseBtn = document.getElementById("getHouseBtn");
+const retryBtn = document.getElementById("retryBtn");
+const houseResult = document.getElementById("houseResult");
+const houseName = document.getElementById("houseName");
+const houseDescription = document.getElementById("houseDescription");
+const houseImage = document.getElementById("houseImage");
 
-inputElement.id = "name-input";
-inputElement.type = "text";
-inputElement.placeholder = "Enter your name..";
-
-button.textContent = "Submit";
-button.style.marginLeft = "10px";
-button.style.backgroundColor = "lightgreen";
-button.id = "my-button";
-
-para.id = "myP";
-
-document.body.append(h1Element, labelElement, inputElement, button, para);
-
-//assigning variables and functions
-
-let username;
-const houses = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"];
-
-//function to shuffle the houses array to get random house assignment
-function shuffle(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+// Function to get a random house with condition if name not provided
+function getRandomHouse() {
+  const username = usernameInput.value.trim();
+  if (username === "") {
+    houseResult.textContent = "Please enter your name to get sorted!";
+    houseResult.classList.remove("hidden");
+    return;
   }
+
+  const randomIndex = Math.floor(Math.random() * houses.length);
+  const house = houses[randomIndex];
+
+  //update house
+  houseName.textContent = `You belong in ${house.name}!`;
+  houseDescription.textContent = house.description;
+  houseImage.src = house.image;
+
+  //update results
+  houseResult.textContent = `${username} belongs in ${house.name}!`;
+  houseResult.classList.remove("error hidden");
+  retryBtn.classList.remove("hidden");
 }
 
-button.onclick = function () {
-  username = document.getElementById("name-input").value;
-  shuffle(houses);
-
-  //function to assign house based on username input
-  function assignHouse() {
-    if (!username) {
-      return "Please enter your name!";
-    } else {
-      return `${username} belongs in House of, ${houses[0]}!`;
-    }
-  }
-
-  const message = assignHouse();
-  document.getElementById("myP").textContent = message;
-};
+// Event listener for Get House button
+getHouseBtn.addEventListener("click", getRandomHouse);
+retryBtn.addEventListener("click", getRandomHouse);
