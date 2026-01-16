@@ -58,11 +58,12 @@ app.post("/users", async (req, res) => {
   res.status(201).send("User added successfully.");
 });
 
-// Route to get user count with styled HTML response
+// Route to get user count to process the result and return only the count
 async function getUserCount() {
   try {
     const result = await knexInstance("user").count("id as count");
-    const count = result && result[0] && result[0].count ? Number(result[0].count) : 0;
+    const count =
+      result && result[0] && result[0].count ? Number(result[0].count) : 0;
     return count;
   } catch (error) {
     console.error("Error fetching user count:", error);
@@ -75,6 +76,8 @@ app.get("/user-count", async (req, res) => {
   const page = renderUserCountPage(usersCount);
   res.send(page);
 });
+
+// Function to render only HTML page for user count
 function renderUserCountPage(usersCount) {
   return `
       <html>
@@ -109,10 +112,15 @@ function renderUserCountPage(usersCount) {
 }
 
 // Route to delete a user by ID
+async function deleteUser(id) {
+  return await knexInstance("user").where({ id }).delete();
+}
+
+//update the endpoint to call the function
 app.delete("/users/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const deletedUser = await knexInstance("user").where({ id }).delete();
+    const deletedUser = await deleteUser(id);
 
     if (deletedUser === 0) {
       return res.status(404).send(`User with ID ${id} not found.`);
