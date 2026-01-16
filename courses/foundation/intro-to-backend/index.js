@@ -116,7 +116,6 @@ async function deleteUser(id) {
   return await knexInstance("user").where({ id }).delete();
 }
 
-//update the endpoint to call the function
 app.delete("/users/:id", async (req, res) => {
   const { id } = req.params;
   try {

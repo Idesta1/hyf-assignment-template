@@ -2,9 +2,8 @@ import express from "express";
 import knex from "knex";
 
 const app = express();
-const port = 3000;
+const port = 3005;
 const tasksFile = "./tasks.sqlite3";
-const home = "./homepage";
 
 // This connects to the database stored in the file mentioned below
 const knexInstance = knex({
