@@ -37,19 +37,6 @@ input #username {
 }
 
 button {
-  padding: 8px 16px;
-  font-size: 16px;
-  background-color: #a5ad4d;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
-button {
   background-color: #d3d35d;
   padding: 10px 20px;
   border: none;
