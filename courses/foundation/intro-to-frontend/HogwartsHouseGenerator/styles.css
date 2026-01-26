@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Playwrite+US+Modern:wght@100..400&display=swap");
+
+body {
+  font-family: Bitter;
+  background-color: #0e0e0e;
+  margin: 0 auto;
+  padding: 20px;
+  color: #fff;
+}
+h1 {
+  text-align: center;
+  color: #fff;
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #7f2c2c;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+input #username {
+  width: 100%;
+  height: auto;
+  padding: 50px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+#username {
+  width: 200px;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #a5ad4d;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button {
+  background-color: #d3d35d;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+button:hover {
+  background-color: #b5b53f;
+}
+
+.house-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+  .container {
+    max-width: 100%;
+    padding: 15px;
+  }
+  .house-info {
+    flex-direction: column;
+    gap: 10px;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+}
