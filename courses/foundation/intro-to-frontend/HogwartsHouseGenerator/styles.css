@@ -4,7 +4,7 @@ body {
   font-family: Bitter;
   background-color: #0e0e0e;
   margin: 0 auto;
-  padding: 20px;
+  padding: 50px;
   color: #fff;
 }
 h1 {
@@ -69,7 +69,7 @@ button:hover {
 }
 
 .house-info img {
-  width: 150px;
+  width: 200px;
   height: auto;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
