@@ -37,6 +37,8 @@ const houseName = document.getElementById("houseName");
 const houseDescription = document.getElementById("houseDescription");
 const houseImage = document.getElementById("houseImage");
 
+let lastHouseIndex = -1; // Track the last selected house index
+
 function getRandomHouse() {
   const username = usernameInput.value.trim();
   if (username === "") {
@@ -45,7 +47,13 @@ function getRandomHouse() {
     return;
   }
 
-  const randomIndex = Math.floor(Math.random() * houses.length);
+  // Generate a new random index that is not the same as the last one
+  let randomIndex;
+  do {
+    randomIndex = Math.floor(Math.random() * houses.length);
+  } while (randomIndex === lastHouseIndex);
+  lastHouseIndex = randomIndex; // Update last index
+
   const house = houses[randomIndex];
 
   houseName.textContent = `You belong in ${house.name}!`;
@@ -54,7 +62,11 @@ function getRandomHouse() {
 
   houseResult.textContent = `${username} belongs in ${house.name}!`;
   houseResult.classList.remove("error", "hidden");
-  getHouseBtn.classList.add("hidden");
+
+  // Change button text after first click
+  if (getHouseBtn.textContent === "Get a House") {
+    getHouseBtn.textContent = "Assign new house";
+  }
   retryBtn.classList.remove("hidden");
 }
 
