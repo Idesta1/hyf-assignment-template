@@ -65,7 +65,7 @@ function getRandomHouse() {
 
   // Change button text after first click
   if (getHouseBtn.textContent === "Get a House") {
-    getHouseBtn.textContent = "Assign new house";
+    getHouseBtn.textContent = "Assign New House";
   }
   retryBtn.classList.remove("hidden");
 }

@@ -11,7 +11,7 @@ function renderProducts(products) {
   products.forEach((product) => {
     const listItem = document.createElement("li");
     listItem.classList.add("product-item");
-    listItem.textContent = `${product.name}
+    listItem.innerHTML = `${product.name}
   Price: $${product.price.toFixed(2)}
 Rating: ${product.rating} / 10
     `;

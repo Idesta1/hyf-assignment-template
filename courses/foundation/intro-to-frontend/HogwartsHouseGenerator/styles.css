@@ -28,7 +28,7 @@ h1 {
   font-size: 1rem;
 }
 
-button {
+#getHouseBtn {
   background-color: #d3d35d;
   padding: 10px 20px;
   border: none;
@@ -37,8 +37,22 @@ button {
   font-size: 1rem;
   transition: background-color 0.3s ease;
 }
-button:hover {
+#getHouseBtn:hover {
   background-color: #b5b53f;
+  color: #fff;
+}
+#retryBtn {
+  background-color: #4fb2d3;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+#retryBtn:hover {
+  background-color: #3f8fa9;
+  color:#fff;
 }
 .house-info {
   display: flex;
