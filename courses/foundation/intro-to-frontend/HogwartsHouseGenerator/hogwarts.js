@@ -29,7 +29,6 @@ const houses = [
   },
 ];
 
-//DOM elements
 const usernameInput = document.getElementById("username");
 const getHouseBtn = document.getElementById("getHouseBtn");
 const retryBtn = document.getElementById("retryBtn");
@@ -38,7 +37,6 @@ const houseName = document.getElementById("houseName");
 const houseDescription = document.getElementById("houseDescription");
 const houseImage = document.getElementById("houseImage");
 
-// Function to get a random house with condition if name not provided
 function getRandomHouse() {
   const username = usernameInput.value.trim();
   if (username === "") {
@@ -50,17 +48,15 @@ function getRandomHouse() {
   const randomIndex = Math.floor(Math.random() * houses.length);
   const house = houses[randomIndex];
 
-  //update house
   houseName.textContent = `You belong in ${house.name}!`;
   houseDescription.textContent = house.description;
   houseImage.src = house.image;
 
-  //update results
   houseResult.textContent = `${username} belongs in ${house.name}!`;
-  houseResult.classList.remove("error hidden");
+  houseResult.classList.remove("error", "hidden");
+  getHouseBtn.classList.add("hidden");
   retryBtn.classList.remove("hidden");
 }
 
-// Event listener for Get House button
 getHouseBtn.addEventListener("click", getRandomHouse);
 retryBtn.addEventListener("click", getRandomHouse);
