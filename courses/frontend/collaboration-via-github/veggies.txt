@@ -1,5 +1,7 @@
 Spinach
 onions
-carrots
+cabbages
 potatoes
 cucumbers
+eggplants
+avocados
