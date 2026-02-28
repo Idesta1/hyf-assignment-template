@@ -1,5 +1,7 @@
 Carrot 
 Spinach 
-Broccoli 
+Mushrooms 
 Potato
 Cucumber 
+Pepper 
+Onion
