@@ -1,19 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Portfolio of Iglesia G. Desta, a Front-end Developer based in Denmark. Showcasing projects, skills, and contact information."
+    />
     <link rel="stylesheet" href="styles.css" />
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha384-abc123"
+      crossorigin="anonymous"
     />
-    <title>About Me</title>
+    <title>Iglesia G. Desta - Portfolio</title>
   </head>
   <body>
     <nav class="nav">
-      <a class="brand">
+      <a class="brand" href="#home">
         <span>Iglesia</span>
       </a>
       <ul class="links">
@@ -24,7 +30,7 @@
           <a href="#about">About</a>
         </li>
         <li>
-          <a href="projects">Projects</a>
+          <a href="#projects">Projects</a>
         </li>
         <li>
           <a href="#contact">Contact</a>
@@ -33,10 +39,10 @@
     </nav>
 
     <main>
-      <section class="home">
+      <section id="home" class="home">
         <img
-          src="https://imgcdn.stablediffusionweb.com/2024/5/16/e7b18099-7e81-4658-959e-06589f60eae9.jpg"
-          alt="profile photo"
+          src="./assets/profile_img.PNG"
+          alt="Profile photo of Iglesia G. Desta" width="500px"
         />
         <div class="info-box">
           <h1>
@@ -56,15 +62,22 @@
           </p>
           <div class="btn-box">
             <button class="theme-btn">Hire</button>
-            <button class="btn">Contact</button>
+            <button class="btn contact-btn">Contact</button>
           </div>
         </div>
       </section>
-      <section class="about">
+
+      <section id="about" class="about">
         <div class="about-box">
           <div class="about-info">
             <h1>
-              <span>About me👩🏽‍💻</span>
+              <span
+                >About me
+                <img
+                  src="./assets/Ig-avatar.png"
+                  alt="Profile photo of Iglesia G. Desta"
+                  width="100px"
+              /></span>
             </h1>
             <p>
               In my free time, I love drawing and visiting places with my
@@ -87,7 +100,7 @@
         </div>
       </section>
 
-      <section class="projects">
+      <section id="projects" class="projects">
         <h1>
           <span>Projects</span>
         </h1>
@@ -98,7 +111,7 @@
               <img
                 src="./assets/art-website.PNG"
                 width="100%"
-                alt="Screenshot of Project 1"
+                alt="Screenshot of Project One: Art Website"
               />
             </a>
             <div class="card-body">
@@ -117,7 +130,7 @@
             <a class="card-media" href="#project-2" aria-label="View Project 2">
               <img
                 src="./assets/travel vlog.PNG"
-                alt="Screenshot of Project 2"
+                alt="Screenshot of Project Two: Travel Vlog"
               />
             </a>
             <div class="card-body">
@@ -136,7 +149,7 @@
             <a class="card-media" href="#project-3" aria-label="View Project 3">
               <img
                 src="./assets/weather_app.PNG"
-                alt="Screenshot of Project 3"
+                alt="Screenshot of Project Three: Weather App"
               />
             </a>
             <div class="card-body">
@@ -152,7 +165,7 @@
         </div>
       </section>
 
-      <section class="contact" style="margin-top: 32px">
+      <section id="contact" class="contact" style="margin-top: 32px">
         <h2>Contact</h2>
         <p>Want to get in touch? Click below or email me directly.</p>
         <a class="btn" href="mailto:you@example.com">Email Me</a>
@@ -162,7 +175,5 @@
     <footer>
       <small>© <span id="year"></span> Coded with ❤ by Iglesia G. Desta</small>
     </footer>
-
-    <script></script>
   </body>
 </html>
