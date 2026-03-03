@@ -8,77 +8,119 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0 auto;
-  line-height: 1.6;
-  background-color: rgb(213, 233, 185);
-  padding-top: 60px; /* Adjust for fixed nav */
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(
+    135deg,
+    #1a252f,
+    #2c3e50
+  ); /* Default background */
+  transition:
+    background 0.5s ease,
+    color 0.5s ease;
+  padding-top: 60px;
+  color: #fff;
 }
 
-.pink {
-  background: var(--highlight-bg);
+body.pink {
+  background: pink; /* Background changes to pink when the class is applied */
+  color: black; /* Font color changes to black */
 }
 
-.pink a {
-  color: var(--contrast-color);
+body:not(.pink):hover {
+  background: linear-gradient(
+    135deg,
+    #2c3e50,
+    #1a252f
+  ); /* Hover effect for dark theme */
 }
 
-/* Navigation Styles */
-nav {
+main {
+  padding: 1rem;
+  max-width: 900px;
+  width: 100%;
+  margin: 32px auto;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.nav {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
-  background-color: #fff;
+  background: #1a1a1a;
   z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 1rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 1rem 3rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-.brand {
-  font-weight: 700;
-  font-size: 22px;
-  margin: 20px;
-  color: var(--contrast-color);
+
+.nav .brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(90deg, #ff7e5f, #feb47b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .nav .links {
   display: flex;
-  gap: 1rem;
-}
-.nav .hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
-.nav .hamburger div {
-  width: 25px;
-  height: 3px;
-  background-color: #333;
-  margin: 3px 0;
+  gap: 2rem;
+  margin: 0 auto;
+  justify-content: center;
 }
 
 .nav .links a {
+  font-size: 1.2rem;
   text-decoration: none;
-  color: #333;
+  color: #fff;
   transition: color 0.3s;
+  background: linear-gradient(90deg, #ff7e5f, #feb47b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+
 .nav .links a:hover {
-  color: #007BFF;
+  color: #ff7e5f;
+}
+
+.nav .hamburger {
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.nav .hamburger div {
+  width: 30px;
+  height: 4px;
+  background-color: #fff;
+  margin: 4px 0;
 }
 
 .nav li {
   list-style: none;
   color: var(--contrast-color);
 }
+
 .nav a {
   text-decoration: none;
   transition: color 0.3s ease;
 }
+
 .nav a:hover {
   color: var(--highlight-bg);
 }
+
 .nav ul {
   display: flex;
   justify-content: space-evenly;
@@ -88,15 +130,26 @@ nav {
 
 /* Home Section */
 .home {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
   margin: 50px;
   padding: 20px;
 }
 
+/* Reset the profile image to its original form */
 .home img {
-  width: 300px;
-  border-radius: 50px;
-  border: 5px solid black;
+  max-width: 50%;
+  height: auto;
+  border-radius: 15px; /* Added border radius for rounded corners */
+}
+
+/* Info Box */
+.home .info-box {
+  max-width: 60%;
+  font-size: 1.2rem;
+  margin: 0;
 }
 
 /* Buttons */
@@ -129,14 +182,6 @@ nav {
 /* Section */
 .section {
   padding: 8em 15%;
-}
-
-/* Main Content */
-main {
-  max-width: 900px;
-  width: 100%;
-  margin: 32px auto;
-  padding: 20px;
 }
 
 /* About Section */
@@ -241,12 +286,12 @@ footer {
   .nav .links {
     display: none;
     flex-direction: column;
-    background-color: #fff;
+    background-color: #1a1a1a;
     position: absolute;
     top: 100%;
     right: 0;
     width: 200px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   }
 
   .nav .links.active {
@@ -260,4 +305,15 @@ footer {
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Ensure overall page responsiveness */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+main {
+  padding: 1rem;
 }

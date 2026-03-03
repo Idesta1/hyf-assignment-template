@@ -3,7 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let contactButton = document.querySelector(".contact-btn");
 
   if (themeButton) {
-    themeButton.addEventListener("click", changeTheme);
+    console.log("Theme button found and ready to listen."); // Debugging log
+    themeButton.addEventListener("click", () => {
+      let body = document.querySelector("body");
+      body.classList.toggle("pink");
+    });
   } else {
     console.error("Theme button not found");
   }
@@ -22,14 +26,16 @@ document.addEventListener("DOMContentLoaded", () => {
     navLinks.classList.toggle("active");
   });
 
+  // Ensure images and layout adjust dynamically
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 768) {
+      navLinks.classList.remove("active");
+    }
+  });
+
   // Update year dynamically
   document.getElementById("year").textContent = new Date().getFullYear();
 });
-
-function changeTheme() {
-  let body = document.querySelector("body");
-  body.classList.toggle("pink");
-}
 
 function contactId() {
   let name = prompt("What is your full name?");
