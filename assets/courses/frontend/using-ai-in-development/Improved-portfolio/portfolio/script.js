@@ -14,11 +14,16 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error("Contact button not found");
   }
 
-  // Dynamically set the year in the footer
-  const yearElement = document.getElementById("year");
-  if (yearElement) {
-    yearElement.textContent = new Date().getFullYear();
-  }
+  // JavaScript for hamburger menu toggle
+  const hamburger = document.querySelector(".hamburger");
+  const navLinks = document.querySelector(".links");
+
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
+
+  // Update year dynamically
+  document.getElementById("year").textContent = new Date().getFullYear();
 });
 
 function changeTheme() {

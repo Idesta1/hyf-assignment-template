@@ -36,6 +36,11 @@
           <a href="#contact">Contact</a>
         </li>
       </ul>
+      <div class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </nav>
 
     <main>
@@ -175,5 +180,10 @@
     <footer>
       <small>© <span id="year"></span> Coded with ❤ by Iglesia G. Desta</small>
     </footer>
+
+    <script>
+      // Update year dynamically
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>
