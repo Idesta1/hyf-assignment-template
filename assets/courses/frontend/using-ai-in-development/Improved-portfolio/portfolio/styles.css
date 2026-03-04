@@ -109,18 +109,6 @@ img {
   color: #ff7e5f;
 }
 
-.nav .hamburger {
-  flex-direction: column;
-  cursor: pointer;
-}
-
-.nav .hamburger div {
-  width: 30px;
-  height: 4px;
-  background-color: #fff;
-  margin: 4px 0;
-}
-
 .nav li {
   list-style: none;
   color: var(--contrast-color);
