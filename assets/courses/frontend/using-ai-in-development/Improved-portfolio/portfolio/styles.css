@@ -425,3 +425,42 @@ main {
   background-clip: text; /* Added standard property for compatibility */
   -webkit-text-fill-color: transparent;
 }
+
+/* Contact Section */
+.contact {
+  text-align: center;
+  margin-top: 32px;
+}
+
+.contact-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 16px;
+}
+
+.contact-icons a {
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.contact-icons a:hover {
+  transform: scale(1.2);
+}
+
+.contact-icons i {
+  font-size: 32px;
+  color: #0077b5; /* Default color */
+}
+
+.contact-icons a[aria-label="Email"] i {
+  color: #f44336; /* Red for Email */
+}
+
+.contact-icons a[aria-label="LinkedIn"] i {
+  color: #0077b5; /* Blue for LinkedIn */
+}
+
+.contact-icons a[aria-label="GitHub"] i {
+  color: #333; /* Dark gray for GitHub */
+}
