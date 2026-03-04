@@ -84,8 +84,8 @@ img {
 .nav .links {
   display: flex;
   gap: 2rem;
-  margin: 0 auto;
   justify-content: center;
+  margin-right: 30px;
 }
 
 .nav .links a {
@@ -93,8 +93,13 @@ img {
   text-decoration: none;
   color: #fff;
   transition: color 0.3s;
-  background: #57C785;
-background: linear-gradient(90deg, rgba(87, 199, 133, 1) 0%, rgba(237, 221, 83, 1) 50%, rgba(184, 118, 118, 1) 100%);
+  background: #57c785;
+  background: linear-gradient(
+    90deg,
+    rgba(87, 199, 133, 1) 0%,
+    rgba(237, 221, 83, 1) 50%,
+    rgba(184, 118, 118, 1) 100%
+  );
   -webkit-background-clip: text;
   background-clip: text; /* Added standard property for compatibility */
   -webkit-text-fill-color: transparent;
@@ -279,43 +284,6 @@ footer {
   }
 }
 
-/* Add styles for responsive navigation */
-@media (max-width: 768px) {
-  .nav .links {
-    display: none;
-    flex-direction: column;
-    background-color: #1a1a1a;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    width: 200px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  }
-
-  .nav .links.active {
-    display: flex;
-  }
-
-  .nav .hamburger {
-    display: flex;
-  }
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-/* Ensure overall page responsiveness */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-}
-
-main {
-  padding: 1rem;
-}
-
 /* Styles for the dynamic contact form popup */
 .popup-overlay {
   position: fixed;
@@ -409,7 +377,7 @@ main {
   font-weight: bold;
   text-align: center;
   padding: 20px;
-  border:black solid 2px;
+  border: black solid 2px;
   background-color: transparent;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -463,4 +431,65 @@ main {
 
 .contact-icons a[aria-label="GitHub"] i {
   color: #333; /* Dark gray for GitHub */
+}
+
+/* Link styles */
+a {
+  color: lightblue; /* Set link color to light blue */
+  text-decoration: none; /* Remove text decoration */
+}
+
+a:hover {
+  color: #add8e6; /* Slightly lighter blue on hover */
+}
+
+/* Responsive Layout for Small Devices */
+@media (max-width: 768px) {
+  .home {
+    flex-direction: column; /* Stack profile photo and info box */
+    align-items: center;
+    text-align: center;
+  }
+
+  .home img {
+    max-width: 70%; /* Reduce photo size */
+    height: auto;
+    margin-bottom: 20px; /* Add spacing below the photo */
+  }
+
+  .home .info-box {
+    font-size: 0.9rem; /* Minimize font size */
+    padding: 10px; /* Adjust padding */
+  }
+
+  /* Center Content and Adjust Layout for Small Devices */
+  body {
+    text-align: center; /* Center all content */
+  }
+
+  .projects .card-grid {
+    display: flex;
+    flex-direction: column; /* Stack project cards in a column */
+    gap: 20px;
+    align-items: center; /* Center the cards */
+  }
+
+  .projects .card {
+    width: 90%; /* Ensure cards take equal width */
+  }
+
+  .skills {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(100px, 1fr)
+    ); /* Equal size for skills */
+    gap: 15px;
+    justify-content: center; /* Center skills */
+  }
+
+  .skills li {
+    font-size: 0.9rem; /* Adjust font size for small devices */
+    padding: 10px;
+  }
 }
