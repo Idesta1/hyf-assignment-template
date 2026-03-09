@@ -1,3 +1,22 @@
 body {
-  background-color: #fa0c00;
+  background-color: #282626 !important;
+  color: #fff !important;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  padding: 10px;
+}
+#short-btn,
+#long-btn {
+  margin: 10px;
+  background-color: #4c4cb5 !important;
+  color: #fff !important;
+  padding: 8px 15px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+#movies-list {
+  margin-left: 20px;
 }

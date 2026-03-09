@@ -110,23 +110,28 @@ const movies = [
   },
 ];
 
-const shortMovies = movies.filter((movie) => movie.running_times <= 6000);
-//create a button to show the short movies in the browser and add an event listener to the button to show the short movies when the button is clicked
-const shortMoviesButton = document.createElement("button");
-shortMoviesButton.textContent = "Short Movies";
-document.body.appendChild(shortMoviesButton);
+document.addEventListener("DOMContentLoaded", () => {
+  const shortBtn = document.getElementById("short-btn");
+  const longBtn = document.getElementById("long-btn");
+  const movieList = document.getElementById("movies-list");
 
-shortMoviesButton.addEventListener("click", () => {
-  const shortMoviesList = document.createElement("ul");
-  shortMovies.forEach((movie) => {
-    const listItem = document.createElement("li");
-    listItem.textContent = `${movie.title} (${movie.year}) - ${movie.running_times} minutes`;
-    shortMoviesList.appendChild(listItem);
+  function displayMovies(movies) {
+    movieList.innerHTML = "";
+    movies.forEach((movie) => {
+      const movieItem = document.createElement("div");
+      movieItem.textContent = `${movie.title} (${movie.year}) `;
+      movieList.appendChild(movieItem);
+    });
+  }
+
+  shortBtn.addEventListener("click", () => {
+    const shortTitleMovies = movies.filter((movie) => movie.title.length <= 10);
+    displayMovies(shortTitleMovies);
   });
-  document.body.appendChild(shortMoviesList);
+
+  //console.log(shortMovies);
+  longBtn.addEventListener("click", () => {
+    const longTitleMovies = movies.filter((movie) => movie.title.length > 10);
+    displayMovies(longTitleMovies);
+  });
 });
-
-//console.log(shortMovies);
-
-const longMovies = movies.filter((movie) => movie.running_times > 6000);
-console.log(longMovies);
