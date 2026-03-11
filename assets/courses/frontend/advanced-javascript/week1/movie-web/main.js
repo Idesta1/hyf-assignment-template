@@ -4,11 +4,8 @@ fetch("./movies.json")
   .then((response) => response.json())
   .then((data) => {
     movies.push(...data);
-    console.log(movies);
 
-    // add tags to movies after the array is populated with data from the JSON file
     const movieWithTag = movies.map((movie) => {
-      console.log("Processing movie:", movie);
       let tag;
       if (movie.rating >= 7) {
         tag = "Good";
@@ -17,22 +14,15 @@ fetch("./movies.json")
       } else {
         tag = "Bad";
       }
-      console.log(
-        `Movie: ${movie.title}, Rating: ${movie.rating}, Tag: ${tag}`,
-      );
       return {
         ...movie,
-        tag: tag, // Add the tag property to the movie object
+        tag: tag,
       };
     });
 
-    console.log(movieWithTag);
-    // filter and map movies with rating >= 6 to get their ratings
     const higherRatedMovies = movieWithTag
       .filter((movie) => movie.rating >= 6)
       .map((movie) => movie.rating);
-
-    console.log("Ratings of movies with rating >= 6:", higherRatedMovies);
 
     const movieCounts = movieWithTag.reduce(
       (counts, movie) => {
@@ -63,14 +53,17 @@ fetch("./movies.json")
     );
 
     function hasDuplicatedWord(title) {
-      const words = title.toLowerCase().split(" ");
+      if (!title) return false; // Handle empty titles
+      const words = title
+        .toLowerCase()
+        .replace(/[^\w\s]/g, "") // Remove punctuation
+        .split(" ");
       const wordSet = new Set();
 
       for (const word of words) {
         if (wordSet.has(word)) {
           return true; // Found a duplicated word
         }
-
         wordSet.add(word);
       }
       return false; // No duplicated words found
@@ -90,6 +83,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function displayMovies(movies, limit = 21) {
     movieList.innerHTML = "";
+    if (movies.length === 0) {
+      movieList.textContent = "No movies found.";
+      return;
+    }
     movies.slice(0, limit).forEach((movie) => {
       const movieItem = document.createElement("div");
       movieItem.textContent = `${movie.title} (${movie.year}) `;
@@ -102,13 +99,11 @@ document.addEventListener("DOMContentLoaded", () => {
     displayMovies(shortTitleMovies);
   });
 
-  //console.log(shortMovies);
   longBtn.addEventListener("click", () => {
     const longTitleMovies = movies.filter((movie) => movie.title.length > 10);
     displayMovies(longTitleMovies);
   });
 
-  //counting number of movies made between 1980-1989
   function countMoviesByYearRange(startYear, endYear) {
     const moviesInRange = movies.filter(
       (movie) => movie.year >= startYear && movie.year <= endYear,
@@ -116,17 +111,17 @@ document.addEventListener("DOMContentLoaded", () => {
     return moviesInRange.length;
   }
 
-  //   const movies80s = movies.filter(
-  //     (movie) => movie.year >= 1980 && movie.year <= 1989,
-  //   );
-  //   console.log(`Number of movies made between 1980-1989: ${movies80s.length}`);
-  // });
   countMoviesBtn.addEventListener("click", () => {
     const startYear = parseInt(startYearInput.value);
     const endYear = parseInt(endYearInput.value);
 
     if (isNaN(startYear) || isNaN(endYear)) {
       movieCountDiv.textContent = "Please enter valid start and end years.";
+      return;
+    }
+
+    if (startYear > endYear) {
+      movieCountDiv.textContent = "Start year cannot be greater than end year.";
       return;
     }
 
@@ -138,6 +133,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const moviesWithKeyword = movies.filter((movie) =>
       movie.title.toLowerCase().includes(keyword.toLowerCase()),
     );
+    if (moviesWithKeyword.length === 0) {
+      alert(`No movies found with the keyword "${keyword}".`);
+      return;
+    }
     displayMovies(moviesWithKeyword);
   }
 

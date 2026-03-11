@@ -7,16 +7,27 @@ img {
   height: auto;
   padding: 10px;
 }
+
 #short-btn,
-#long-btn {
+#long-btn,
+#count-movies-btn {
   margin: 10px;
-  background-color: #4c4cb5 !important;
-  color: #fff !important;
+  background-color: #e9ecef !important;
+  color: #198754 !important;
+  border: 1px solid #198754 !important;
   padding: 8px 15px;
   border-radius: 10px;
   border: none;
   cursor: pointer;
 }
+
+#short-btn:hover,
+#long-btn:hover,
+#count-movies-btn:hover {
+  background-color: #198754 !important;
+  color: #fff !important;
+}
+
 #movies-list {
   margin-left: 20px;
 }
@@ -38,46 +49,66 @@ img {
   height: auto;
 }
 #movies-list-container {
-  /* Add space between the form and movie list */
-  padding: 10px; /* Add padding inside the container */
-  border: 1px solid #ccc; /* Add a border around the container */
-  border-radius: 5px; /* Round the corners */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
   max-width: 50%;
   width: 100%;
 }
 
-/* Movie list items */
 #movies-list {
   display: flex;
-  flex-direction: column; /* Stack movie items vertically */
-  gap: 5px; /* Add space between movie items */
+  flex-direction: column;
+  gap: 5px;
 }
 
 #movie-list div {
-  padding: 5px; /* Add padding to each movie item */
-  border-bottom: 1px solid #ddd; /* Add a separator between items */
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
 }
+
 #movie-list div:last-child {
   border-bottom: none;
 }
 
-/* Media query for desktop screens */
-@media (min-width: 400px) {
+/* Media query for small devices like iPhone 14 */
+@media (max-width: 430px) {
+  body {
+    font-size: 14px;
+  }
+
   .container {
-    flex-direction: column; /* Align items side by side */
-    justify-content: center; /* Center the content horizontally */
-    align-items: flex-start; /* Align items to the top */
+    padding: 10px;
   }
 
-  .main-image {
-    max-width: 50%; /* Limit the image width on larger screens */
+  .top-container {
+    flex-direction: column;
+    align-items: center;
   }
 
-  #movie-list-container {
-    max-width: 50%; /* Limit the movie list width on larger screens */
+  .img-fluid {
+    max-width: 100%;
   }
-  #movie-list-container {
-    max-height: 200px; /* Limit the height of the movie list */
-    overflow-y: auto; /* Add a vertical scrollbar if content overflows */
+
+  #movies-list-container {
+    max-width: 100%;
+    padding: 5px;
+  }
+
+  #short-btn,
+  #long-btn,
+  #count-movies-btn {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .form-container .row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .form-container .col-md-5,
+  .form-container .col-md-2 {
+    width: 100%;
   }
 }
