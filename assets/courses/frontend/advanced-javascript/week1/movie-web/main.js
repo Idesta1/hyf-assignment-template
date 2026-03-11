@@ -5,27 +5,35 @@ fetch("./movies.json")
   .then((data) => {
     movies.push(...data);
     console.log(movies);
-  
-  // add tags to movies after the array is populated with data from the JSON file
-  const movieWithTag = movies.map((movie) => {
-    console.log("Processing movie:", movie);
-    let tag;
-    if (movie.rating >= 7) {
-      tag = "Good";
-    } else if (movie.rating >= 4 && movie.rating < 7) {
-      tag = "Average";
-    } else {
-      tag = "Bad";
-    }
-    console.log(`Movie: ${movie.title}, Rating: ${movie.rating}, Tag: ${tag}`);
-    return {
-      ...movie,
-      tag: tag, // Add the tag property to the movie object
-    };
-  });
 
-  console.log(movieWithTag);
-})
+    // add tags to movies after the array is populated with data from the JSON file
+    const movieWithTag = movies.map((movie) => {
+      console.log("Processing movie:", movie);
+      let tag;
+      if (movie.rating >= 7) {
+        tag = "Good";
+      } else if (movie.rating >= 4 && movie.rating < 7) {
+        tag = "Average";
+      } else {
+        tag = "Bad";
+      }
+      console.log(
+        `Movie: ${movie.title}, Rating: ${movie.rating}, Tag: ${tag}`,
+      );
+      return {
+        ...movie,
+        tag: tag, // Add the tag property to the movie object
+      };
+    });
+
+    console.log(movieWithTag);
+    // filter and map movies with rating >= 6 to get their ratings
+    const higherRatedMovies = movieWithTag
+      .filter((movie) => movie.rating >= 6)
+      .map((movie) => movie.rating);
+
+    console.log("Ratings of movies with rating >= 6:", higherRatedMovies);
+  })
   .catch((error) => console.error("Error fetching movies:", error));
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -83,5 +91,24 @@ document.addEventListener("DOMContentLoaded", () => {
     movieCountDiv.textContent = `Number of movies made between ${startYear}-${endYear}: ${count}`;
   });
 
+  function displayMoviesByKeyword(keyword) {
+    const moviesWithKeyword = movies.filter((movie) =>
+      movie.title.toLowerCase().includes(keyword.toLowerCase()),
+    );
+    displayMovies(moviesWithKeyword);
+  }
+
+  const keywordInput = document.getElementById("keyword-input");
+  const searchBtn = document.getElementById("keyword-btn");
   
+
+  searchBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    const keyword = keywordInput.value.trim();
+    if (keyword === "") {
+      alert("Please enter a keyword to search.");
+      return;
+    }
+    displayMoviesByKeyword(keyword);
+  });
 });
