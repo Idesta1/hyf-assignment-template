@@ -1,0 +1,83 @@
+body {
+  background-color: #282626 !important;
+  color: #fff !important;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  padding: 10px;
+}
+#short-btn,
+#long-btn {
+  margin: 10px;
+  background-color: #4c4cb5 !important;
+  color: #fff !important;
+  padding: 8px 15px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+#movies-list {
+  margin-left: 20px;
+}
+.container {
+  background-color: #030321 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+.top-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
+}
+.img-fluid {
+  max-width: 50%;
+  height: auto;
+}
+#movies-list-container {
+  /* Add space between the form and movie list */
+  padding: 10px; /* Add padding inside the container */
+  border: 1px solid #ccc; /* Add a border around the container */
+  border-radius: 5px; /* Round the corners */
+  max-width: 50%;
+  width: 100%;
+}
+
+/* Movie list items */
+#movies-list {
+  display: flex;
+  flex-direction: column; /* Stack movie items vertically */
+  gap: 5px; /* Add space between movie items */
+}
+
+#movie-list div {
+  padding: 5px; /* Add padding to each movie item */
+  border-bottom: 1px solid #ddd; /* Add a separator between items */
+}
+#movie-list div:last-child {
+  border-bottom: none;
+}
+
+/* Media query for desktop screens */
+@media (min-width: 400px) {
+  .container {
+    flex-direction: column; /* Align items side by side */
+    justify-content: center; /* Center the content horizontally */
+    align-items: flex-start; /* Align items to the top */
+  }
+
+  .main-image {
+    max-width: 50%; /* Limit the image width on larger screens */
+  }
+
+  #movie-list-container {
+    max-width: 50%; /* Limit the movie list width on larger screens */
+  }
+  #movie-list-container {
+    max-height: 200px; /* Limit the height of the movie list */
+    overflow-y: auto; /* Add a vertical scrollbar if content overflows */
+  }
+}
