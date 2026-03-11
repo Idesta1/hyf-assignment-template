@@ -33,7 +33,50 @@ fetch("./movies.json")
       .map((movie) => movie.rating);
 
     console.log("Ratings of movies with rating >= 6:", higherRatedMovies);
+
+    const movieCounts = movieWithTag.reduce(
+      (counts, movie) => {
+        if (movie.tag === "Good") {
+          counts.good++;
+        } else if (movie.tag === "Average") {
+          counts.average++;
+        } else if (movie.tag === "Bad") {
+          counts.bad++;
+        }
+        return counts;
+      },
+      { good: 0, average: 0, bad: 0 },
+    );
+
+    document.getElementById("good-movie-count").textContent = movieCounts.good;
+    document.getElementById("average-movie-count").textContent =
+      movieCounts.average;
+    document.getElementById("bad-movie-count").textContent = movieCounts.bad;
+
+    const moviesWithDuplicatedWords = movies.filter((movie) =>
+      hasDuplicatedWord(movie.title),
+    );
+
+    console.log(
+      "Movies with duplicated words in the title:",
+      moviesWithDuplicatedWords,
+    );
+
+    function hasDuplicatedWord(title) {
+      const words = title.toLowerCase().split(" ");
+      const wordSet = new Set();
+
+      for (const word of words) {
+        if (wordSet.has(word)) {
+          return true; // Found a duplicated word
+        }
+
+        wordSet.add(word);
+      }
+      return false; // No duplicated words found
+    }
   })
+
   .catch((error) => console.error("Error fetching movies:", error));
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -100,7 +143,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const keywordInput = document.getElementById("keyword-input");
   const searchBtn = document.getElementById("keyword-btn");
-  
 
   searchBtn.addEventListener("click", (event) => {
     event.preventDefault();
