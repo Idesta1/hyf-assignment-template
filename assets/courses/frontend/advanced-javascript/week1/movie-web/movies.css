@@ -1,0 +1,114 @@
+body {
+  background-color: #282626 !important;
+  color: #fff !important;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  padding: 10px;
+}
+
+#short-btn,
+#long-btn,
+#count-movies-btn {
+  margin: 10px;
+  background-color: #e9ecef !important;
+  color: #198754 !important;
+  border: 1px solid #198754 !important;
+  padding: 8px 15px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+#short-btn:hover,
+#long-btn:hover,
+#count-movies-btn:hover {
+  background-color: #198754 !important;
+  color: #fff !important;
+}
+
+#movies-list {
+  margin-left: 20px;
+}
+.container {
+  background-color: #030321 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+.top-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
+}
+.img-fluid {
+  max-width: 50%;
+  height: auto;
+}
+#movies-list-container {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  max-width: 50%;
+  width: 100%;
+}
+
+#movies-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#movie-list div {
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+#movie-list div:last-child {
+  border-bottom: none;
+}
+
+/* Media query for small devices like iPhone 14 */
+@media (max-width: 430px) {
+  body {
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .top-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .img-fluid {
+    max-width: 100%;
+  }
+
+  #movies-list-container {
+    max-width: 100%;
+    padding: 5px;
+  }
+
+  #short-btn,
+  #long-btn,
+  #count-movies-btn {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .form-container .row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .form-container .col-md-5,
+  .form-container .col-md-2 {
+    width: 100%;
+  }
+}
