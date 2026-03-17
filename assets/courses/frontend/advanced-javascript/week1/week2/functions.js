@@ -91,3 +91,32 @@ function logBadJoke() {
 
 console.log(jokeCreator(true, logFunnyJoke, logBadJoke));
 console.log(jokeCreator(false, logFunnyJoke, logBadJoke));
+
+//create a function in three different ways
+const array = [
+  () => console.log("Hello"),
+  () => console.log("Can I get a cake"),
+  () => console.log("Goodbye"),
+];
+
+array.forEach((func) => func());
+
+// 2 expression function
+const SayHi = function () {
+  console.log("Hi there");
+};
+//normal function
+function sayHello() {
+  console.log("Hello there");
+}
+SayHi();
+sayHello();
+
+//create object with value function
+const obj = {
+  greet: function () {
+    console.log("Hello");
+  },
+};
+
+obj.greet();
