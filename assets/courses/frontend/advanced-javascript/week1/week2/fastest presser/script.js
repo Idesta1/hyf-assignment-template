@@ -26,7 +26,7 @@ document.getElementById("startBtn").addEventListener("click", () => {
 
   setTimeout(() => {
     isGameRunning = false;
-    statusEl.textContent = "Game over!";
+    statusEl.textContent = "Time's up!";
     findWinner();
   }, time);
 });
@@ -82,3 +82,4 @@ function findWinner() {
   }
   resultDiv.textContent = message;
 }
+confetti.render();
