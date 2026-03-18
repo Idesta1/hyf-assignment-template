@@ -1,3 +1,4 @@
+//2. functions
 // Function that logs a string after a specified delay in seconds
 function delayLogOut(delay, stringToLog) {
   setTimeout(() => {
