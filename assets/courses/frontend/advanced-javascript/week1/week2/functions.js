@@ -93,6 +93,7 @@ function logBadJoke() {
 console.log(jokeCreator(true, logFunnyJoke, logBadJoke));
 console.log(jokeCreator(false, logFunnyJoke, logBadJoke));
 
+//3.function as a variable
 //create a function in three different ways
 const array = [
   () => console.log("Hello"),
