@@ -9,6 +9,15 @@ const lButton = document.getElementById("l-btn");
 const jButton = document.getElementById("j-btn");
 const keyboardOption = document.getElementById("keyboard-option");
 const mouseOption = document.getElementById("mouse-option");
+const confetti = new ConfettiGenerator({
+  target: "myCanvas",
+  max: 200,
+  size: 1,
+  animate: true,
+  clock: 25,
+  rotate: true,
+  props: ["square", "circle", "triangle", "line"],
+});
 
 document.getElementById("startBtn").addEventListener("click", () => {
   const time = document.getElementById("seconds").value * 1000;
@@ -53,8 +62,10 @@ document.addEventListener("keydown", (event) => {
   const key = event.key.toLowerCase();
   if (key === "l") {
     lCount++;
+    checkWinnerWithConfetti();
   } else if (key === "j") {
     jCount++;
+    checkWinnerWithConfetti();
   }
 });
 
@@ -62,14 +73,26 @@ document.addEventListener("keydown", (event) => {
 lButton.addEventListener("click", () => {
   if (isGameRunning && !useKeyboard) {
     lCount++;
+    checkWinnerWithConfetti();
   }
 });
 
 jButton.addEventListener("click", () => {
   if (isGameRunning && !useKeyboard) {
     jCount++;
+    checkWinnerWithConfetti();
   }
 });
+
+function checkWinnerWithConfetti() {
+  if (lCount > 20 || jCount > 20) {
+    let winner = lCount > 20 ? "Player L" : "Player J";
+    resultDiv.textContent = `${winner} wins with more than 20 presses!`;
+
+    // Trigger confetti
+    triggerConfetti();
+  }
+}
 
 function findWinner() {
   let message = "";
@@ -82,4 +105,10 @@ function findWinner() {
   }
   resultDiv.textContent = message;
 }
-confetti.render();
+
+function triggerConfetti() {
+  confetti.render();
+  setTimeout(() => {
+    confetti.clear();
+  }, 10000);
+}
