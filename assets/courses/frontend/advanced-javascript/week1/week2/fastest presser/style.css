@@ -1,0 +1,85 @@
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  background-image: url("background-img.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.game-container {
+  background-color: rgba(142, 230, 180, 0.586);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+#choose-input {
+  display: block;
+  margin-bottom: 50px;
+}
+#keyboard-option,
+#mouse-option {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: brown;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+#startBtn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  background-color: brown;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+#startBtn:hover {
+  background-color: darkred;
+}
+.buttons-container {
+  margin-top: 20px;
+}
+#l-btn,
+#j-btn {
+  display: inline-block;
+  padding: 20px 30px;
+  background: rgb(53, 52, 52);
+  color: #fff;
+  border-radius: 5px;
+  box-shadow:
+    0 4px 0 black,
+    0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.status {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.footer {
+  opacity: 0.7;
+  font-size: 15px;
+}
+a {
+  color: #193cb8;
+  text-decoration: none;
+}
+#myCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Ensures it doesn't block interactions */
+  z-index: 10; /* Places it above other elements */
+}
