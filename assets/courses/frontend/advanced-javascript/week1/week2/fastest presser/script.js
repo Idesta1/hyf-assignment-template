@@ -106,9 +106,15 @@ function findWinner() {
   resultDiv.textContent = message;
 }
 
+let isConfettiRunning = false;
+
 function triggerConfetti() {
+  if (isConfettiRunning) return; // Prevent multiple triggers
+  isConfettiRunning = true;
+
   confetti.render();
   setTimeout(() => {
     confetti.clear();
+    isConfettiRunning = false; // Reset the flag
   }, 10000);
 }
