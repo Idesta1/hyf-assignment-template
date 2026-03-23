@@ -6,17 +6,15 @@ function delayLogOut(delay, stringToLog) {
   }, delay * 1000);
 }
 
-const logoutBtn = document.getElementById("logout-btn");
-logoutBtn.addEventListener("click", () => {
-  delayLogOut(5, "This string logged after 5 seconds");
-});
+console.log(delayLogOut(3, "This string logged after 3 seconds"));
 
-// console.log(delayLogOut(2.5, "This string logged after 2.5 seconds"));
-// console.log(delayLogOut(5, "This string logged after 5 seconds"));
+function earthLogger() {
+  console.log("Earth");
+}
 
-function earthLogger() {}
-
-function saturnLogger() {}
+function saturnLogger() {
+  console.log("Saturn");
+}
 
 function planetLogFunction(logger) {
   logger();
@@ -54,7 +52,7 @@ runAfterDelay(4, () => {
   console.log("This string logged after 4 seconds");
 });
 
-function doubleClickDetector(element) {
+function doubleClickDetector(element = document) {
   let clickCount = 0;
   element.addEventListener("click", () => {
     clickCount++;
@@ -63,12 +61,12 @@ function doubleClickDetector(element) {
         console.log("Double click detected!");
       }
       clickCount = 0;
-    }, 300);
+    }, 500);
   });
 }
 
 const clickElement = document.getElementById("click-element");
-doubleClickDetector(clickElement);
+doubleClickDetector(document);
 
 function jokeCreator(shouldTellFunnyJoke, logFunnyJoke, logBadJoke) {
   if (shouldTellFunnyJoke === true) {
