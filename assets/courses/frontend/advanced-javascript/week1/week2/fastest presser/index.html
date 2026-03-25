@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./style.css" />
+    <title>The Fastest Presser Game</title>
+  </head>
+  <body>
+    <div class="game-container">
+      <h1>The Fastest Presser in This Realm</h1>
+
+      <label for="seconds">Enter game time (in seconds): </label>
+      <input type="number" id="seconds" placeholder="seconds" />
+      <button id="startBtn">Start Game</button>
+
+      <h3>Choose Your Input Method:</h3>
+      <button id="keyboard-option">Keyboard</button>
+      <button id="mouse-option">Mouse</button>
+
+      <div class="buttons-container">
+        <button id="l-btn">L</button>
+        <button id="j-btn">J</button>
+      </div>
+
+      <h2 id="status">Press button to begin the game</h2>
+      <div id="result"></div>
+      <canvas id="myCanvas"></canvas>
+    </div>
+    <footer class="footer">
+      <small
+        >Coded by Iglesia Desta Mar 2026&copy
+        <a href="https://www.hackyourfuture.dk/" target="_blank"
+          ><strong>HackYourFuture</strong></a
+        ></small
+      >
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.13/dist/index.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
