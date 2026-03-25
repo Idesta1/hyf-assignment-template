@@ -9,23 +9,13 @@
   <body>
     <main>
       <h1>Iglesia's Currency Converter</h1>
-
-      <select id="fromCurrency">
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-        <option value="GBP">GBP</option>
-        <option value="DKK">DKK</option>
-      </select>
+      <select id="fromCurrency"></select>
       <input type="number" id="amount" placeholder="Enter amount" />
       <button id="convert">Convert</button>
 
-      <select id="targetCurrency">
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-        <option value="GBP">GBP</option>
-        <option value="DKK">DKK</option>
-      </select>
-      <input type="number" id="result" />
+      <select id="toCurrency"></select>
+      <input type="number" id="resultInput" />
+      <h1 id="result"></h1>
     </main>
     <script src="script.js"></script>
   </body>
