@@ -1,15 +1,15 @@
-    body {
-      font-family: 'Courier New', Courier, monospace;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      width: 100%;
-      background-image: url("./image/currency.jpg");
-      background-size: cover;
-      background-repeat: no-repeat;
+body {
+  font-family: "Courier New", Courier, monospace;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background-image: url("./image/currency.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 main {
   display: flex;
@@ -33,6 +33,29 @@ select {
   height: 30px;
   font-size: 16px;
 }
+.actionRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+#swapCurrencies {
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  font-size: 28px;
+  line-height: 1;
+  background-color: #ece811;
+  color: #0a1d56;
+  cursor: pointer;
+}
+
+#swapCurrencies:hover {
+  background-color: #fff36c;
+}
+
 #convert {
   width: 150px;
   height: 40px;
@@ -61,11 +84,21 @@ a {
     height: 300px;
     padding: 50px;
   }
+
+  .actionRow {
+    width: 100%;
+  }
+
   input,
   select {
     width: 100%;
   }
-  h1{
+
+  #convert {
+    width: 100%;
+  }
+
+  h1 {
     font-size: 22px;
   }
 }

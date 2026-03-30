@@ -2,12 +2,21 @@ const fromCurrency = document.getElementById("fromCurrency");
 const toCurrency = document.getElementById("toCurrency");
 const amountInput = document.getElementById("amount");
 const convertButton = document.getElementById("convert");
+const swapCurrenciesButton = document.getElementById("swapCurrencies");
 const resultInput = document.getElementById("resultInput");
 
 resultInput.readOnly = true;
 
-//create currency code options and populate the select elements dynamically
-function currencyOptions(currencyCodes) {
+/**Fetch exchange rate data for a given base currency */
+async function fetchRateData(baseCurrency) {
+  const response = await fetch(
+    `https://open.er-api.com/v6/latest/${baseCurrency}`,
+  );
+  return response.json();
+}
+
+/**create currency code options and populate the select elements dynamically*/
+function getCurrencyCodes(currencyCodes) {
   fromCurrency.innerHTML = "";
   toCurrency.innerHTML = "";
 
@@ -27,14 +36,14 @@ function currencyOptions(currencyCodes) {
   toCurrency.value = "DKK";
 }
 
-// Fetch the list of currency codes from the API and populate the select elements
-async function currencyList() {
+/**Fetch the list of currency codes from the API and populate the select elements*/
+async function showCurrencyList() {
   try {
-    const response = await fetch("https://open.er-api.com/v6/latest/USD");
-    const data = await response.json();
+    const data = await fetchRateData("EUR");
+
     const currencyCodes = Object.keys(data.rates).sort();
 
-    currencyOptions(currencyCodes);
+    getCurrencyCodes(currencyCodes);
   } catch (error) {
     console.error("Error loading currency list:", error);
   }
@@ -52,8 +61,7 @@ async function convertCurrency() {
       return;
     }
 
-    const response = await fetch(`https://open.er-api.com/v6/latest/${from}`);
-    const data = await response.json();
+    const data = await fetchRateData(from);
     const rates = data.rates[to];
 
     const convertedAmount = (amount * rates).toFixed(2);
@@ -65,5 +73,12 @@ async function convertCurrency() {
   }
 }
 
+function swapCurrencies() {
+  const currentFromCurrency = fromCurrency.value;
+  fromCurrency.value = toCurrency.value;
+  toCurrency.value = currentFromCurrency;
+}
+
 convertButton.addEventListener("click", convertCurrency);
-currencyList();
+swapCurrenciesButton.addEventListener("click", swapCurrencies);
+showCurrencyList();
