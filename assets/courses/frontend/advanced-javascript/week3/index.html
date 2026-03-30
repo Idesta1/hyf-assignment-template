@@ -12,7 +12,12 @@
 
       <select id="fromCurrency"></select>
       <input type="number" id="amount" placeholder="Enter amount" min="0" />
-      <button id="convert">Convert</button>
+      <div class="actionRow">
+        <button id="convert">Convert</button>
+        <button id="swapCurrencies" type="button" aria-label="Swap currencies">
+          ↕
+        </button>
+      </div>
 
       <select id="toCurrency"></select>
       <input type="number" id="resultInput" />
