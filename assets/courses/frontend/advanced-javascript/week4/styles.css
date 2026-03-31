@@ -2,9 +2,9 @@ body {
   font-family: "Courier New", Courier, monospace;
   padding: 0;
   margin: 0;
-  background-color: rgb(193, 196, 195);
+  background-color: #c1c4c3;
 }
-main {
+#container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,4 +40,69 @@ a {
 footer {
   text-align: center;
   margin-top: 20px;
+}
+li {
+  margin-bottom: 10px;
+  list-style: none;
+}
+#nav-bar {
+  display: flex;
+  justify-content: center;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+}
+
+#nav-bar nav {
+  width: min(1100px, 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.navbar-brand {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-bottom: 0;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.Primary-btn,
+.Secondary-btn {
+  padding: 8px 14px;
+  font-size: 14px;
+}
+
+@media (max-width: 700px) {
+  #nav-bar nav {
+    justify-content: center;
+  }
+
+  .nav-links {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .nav-actions {
+    justify-content: center;
+    width: 100%;
+  }
 }

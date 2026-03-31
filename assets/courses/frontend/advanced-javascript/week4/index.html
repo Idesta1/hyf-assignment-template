@@ -7,31 +7,49 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main>
+    <div id="nav-bar">
+      <nav>
+        <a class="navbar-brand" href="#">Iglesia</a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html">Gallery</a></li>
+          <li>
+            <a href="https://www.hackyourfuture.dk/" target="_blank">About</a>
+          </li>
+          <li><a href="index.html">Features</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="Primary-btn" type="button">Login</button>
+          <button class="Secondary-btn" type="button">SignUp</button>
+        </div>
+      </nav>
+    </div>
+    <main id="container">
       <h1>Website Screenshot Generator</h1>
       <h3>Fast, reliable website snapshots</h3>
       <p>
         Capture high-quality screenshots of any website with our easy-to-use
         generator.
       </p>
-      <form>
+      <form id="form">
         <label for="url">Enter website URL:</label>
         <input
           type="text"
-          id="url"
+          id="urlInput"
           name="url"
           placeholder="https://example.com"
         />
-        <button type="submit">Generate Screenshot</button>
+        <button id="CaptureBtn" type="submit">Generate Screenshot</button>
       </form>
-      <div id="thumbnail">
+      <div id="result">
         <img
           id="screenshot"
           src="./images/screenshot1.PNG"
           alt="Website Screenshot"
-          width="400"
+          width="500"
         />
       </div>
+      <button id="saveBtn" type="button">Save Screenshot</button>
     </main>
     <footer class="footer">
       <small
