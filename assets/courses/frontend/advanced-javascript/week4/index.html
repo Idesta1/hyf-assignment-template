@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website Screenshot Generator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="nav-bar">
+      <nav>
+        <a class="navbar-brand" href="#">Iglesia</a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html">Gallery</a></li>
+          <li>
+            <a href="https://www.hackyourfuture.dk/" target="_blank">About</a>
+          </li>
+          <li><a href="index.html">Features</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="Primary-btn" type="button">Login</button>
+          <button class="Secondary-btn" type="button">SignUp</button>
+        </div>
+      </nav>
+    </div>
+    <main id="container">
+      <h1>Website Screenshot Generator</h1>
+      <h3>Fast, reliable website snapshots</h3>
+      <p>
+        Capture high-quality screenshots of any website with our easy-to-use
+        generator.
+      </p>
+      <form id="form">
+        <label for="url">Enter website URL:</label>
+        <input
+          type="text"
+          id="urlInput"
+          name="url"
+          placeholder="https://example.com"
+        />
+        <button id="CaptureBtn" type="submit">Generate Screenshot</button>
+      </form>
+      <div id="result">
+        <img
+          id="screenshot"
+          src="./images/screenshot1.PNG"
+          alt="Website Screenshot"
+          width="500"
+        />
+      </div>
+      <button id="saveBtn" type="button">Save Screenshot</button>
+
+      <section id="savedSection">
+        <h3>Saved Screenshots</h3>
+        <ul id="savedScreenshots"></ul>
+      </section>
+    </main>
+    <footer class="footer">
+      <small
+        >Coded by
+        <a href="https://www.linkedin.com/in/iglesia-desta-/">Iglesia Desta</a>
+        Mar 2026&copy Hosted on
+        <a
+          href="https://hyf-assignment-template-9ktk28bi5-idesta1s-projects.vercel.app/"
+          target="_blank"
+          ><strong>Vercel</strong></a
+        >
+        <a href="https://www.hackyourfuture.dk/" target="_blank"
+          ><strong>HackYourFuture</strong></a
+        ></small
+      >
+    </footer>
+
+    <script type="module" src="scripts.js"></script>
+  </body>
+</html>
