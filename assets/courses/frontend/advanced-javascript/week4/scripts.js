@@ -3,10 +3,15 @@ const form = document.getElementById("form");
 const urlInput = document.getElementById("urlInput");
 const screenshotImage = document.getElementById("screenshot");
 const captureButton = document.getElementById("CaptureBtn");
+const saveButton = document.getElementById("saveBtn");
+const savedScreenshotsList = document.getElementById("savedScreenshots");
 const CACHE_STORAGE_KEY = "screenshot-cache";
 const REQUEST_COOLDOWN_MS = 15000;
+const SCREENSHOT_API_ENDPOINT = "/api/screenshot";
+const SAVED_SCREENSHOTS_API_ENDPOINT = "/api/screenshots";
 
 let lastRequestAt = 0;
+let latestScreenshot = null;
 
 const screenshotCache = new Map(
   Object.entries(
@@ -23,13 +28,142 @@ function persistCache() {
 
 function setCaptureButtonState(isLoading) {
   captureButton.disabled = isLoading;
-  captureButton.textContent = isLoading ? "Generating..." : "Generate Screenshot";
+  captureButton.textContent = isLoading
+    ? "Generating..."
+    : "Generate Screenshot";
 }
 
 function setScreenshotAndCache(websiteUrl, screenshotUrl) {
   screenshotImage.src = screenshotUrl;
+  latestScreenshot = { websiteUrl, screenshotUrl };
   screenshotCache.set(websiteUrl, screenshotUrl);
   persistCache();
+}
+
+function renderSavedScreenshots(savedItems) {
+  savedScreenshotsList.innerHTML = "";
+
+  if (savedItems.length === 0) {
+    const emptyState = document.createElement("li");
+    emptyState.textContent = "No saved screenshots yet.";
+    savedScreenshotsList.appendChild(emptyState);
+    return;
+  }
+
+  savedItems.forEach((item) => {
+    const listItem = document.createElement("li");
+    listItem.className = "saved-item";
+
+    const link = document.createElement("a");
+    link.href = item.websiteUrl;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = item.websiteUrl;
+
+    const thumbnail = document.createElement("img");
+    thumbnail.src = item.screenshotUrl;
+    thumbnail.alt = `Saved screenshot for ${item.websiteUrl}`;
+    thumbnail.width = 160;
+
+    const deleteButton = document.createElement("button");
+    deleteButton.type = "button";
+    deleteButton.textContent = "Delete";
+    deleteButton.addEventListener("click", async () => {
+      await deleteSavedScreenshot(item._id);
+    });
+
+    listItem.appendChild(link);
+    listItem.appendChild(thumbnail);
+    listItem.appendChild(deleteButton);
+    savedScreenshotsList.appendChild(listItem);
+  });
+}
+
+async function readCrudCrudError(response, fallbackMessage) {
+  const responseText = await response.text();
+
+  try {
+    const parsed = responseText ? JSON.parse(responseText) : null;
+    if (parsed?.error) {
+      return parsed.error;
+    }
+  } catch {
+    // Ignore JSON parse issues and fall back to raw text.
+  }
+
+  return responseText || fallbackMessage;
+}
+
+async function loadSavedScreenshots() {
+  try {
+    const response = await fetch(SAVED_SCREENSHOTS_API_ENDPOINT);
+
+    if (!response.ok) {
+      throw new Error(
+        await readCrudCrudError(response, "Could not load saved screenshots."),
+      );
+    }
+
+    const savedItems = await response.json();
+    renderSavedScreenshots(savedItems);
+  } catch (error) {
+    console.error("Loading saved screenshots failed:", error);
+    window.alert(error.message);
+  }
+}
+
+async function saveCurrentScreenshot() {
+  if (!latestScreenshot) {
+    window.alert("Generate a screenshot first, then save it.");
+    return;
+  }
+
+  try {
+    const response = await fetch(SAVED_SCREENSHOTS_API_ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        websiteUrl: latestScreenshot.websiteUrl,
+        screenshotUrl: latestScreenshot.screenshotUrl,
+        createdAt: new Date().toISOString(),
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(
+        await readCrudCrudError(response, "Could not save screenshot."),
+      );
+    }
+
+    await loadSavedScreenshots();
+  } catch (error) {
+    console.error("Saving screenshot failed:", error);
+    window.alert(error.message);
+  }
+}
+
+async function deleteSavedScreenshot(screenshotId) {
+  try {
+    const response = await fetch(
+      `${SAVED_SCREENSHOTS_API_ENDPOINT}/${screenshotId}`,
+      {
+        method: "DELETE",
+      },
+    );
+
+    if (!response.ok) {
+      throw new Error(
+        await readCrudCrudError(response, "Could not delete screenshot."),
+      );
+    }
+
+    await loadSavedScreenshots();
+  } catch (error) {
+    console.error("Deleting screenshot failed:", error);
+    window.alert(error.message);
+  }
 }
 
 function getFallbackScreenshotUrl(websiteUrl) {
@@ -60,18 +194,22 @@ function normalizeWebsiteUrl(input) {
 
 /** Fetches screenshot metadata from API and returns the image URL */
 async function fetchScreenshotUrl(websiteUrl) {
-  const encodedUrl = encodeURIComponent(websiteUrl);
-  const apiUrl = `https://website-screenshot6.p.rapidapi.com/screenshot?url=${encodedUrl}&width=1920&height=1080`;
-  const response = await fetch(apiUrl, {
-    method: "GET",
+  const response = await fetch(SCREENSHOT_API_ENDPOINT, {
+    method: "POST",
     headers: {
-      x_rapidapi_key: "7b0e412a72msh38f49f945ca2187p11bba6jsnc353b75a2004",
-      "x-rapidapi-host": "website-screenshot6.p.rapidapi.com",
       "Content-Type": "application/json",
     },
+    body: JSON.stringify({ websiteUrl }),
   });
 
-  const result = await response.json();
+  const responseText = await response.text();
+  let result = {};
+
+  try {
+    result = responseText ? JSON.parse(responseText) : {};
+  } catch {
+    result = {};
+  }
 
   if (!response.ok) {
     const error = new Error(
@@ -144,3 +282,6 @@ form.addEventListener("submit", async (event) => {
     setCaptureButtonState(false);
   }
 });
+
+saveButton.addEventListener("click", saveCurrentScreenshot);
+loadSavedScreenshots();
