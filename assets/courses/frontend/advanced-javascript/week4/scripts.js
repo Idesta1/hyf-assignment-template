@@ -147,7 +147,7 @@ async function saveCurrentScreenshot() {
 async function deleteSavedScreenshot(screenshotId) {
   try {
     const response = await fetch(
-      `${SAVED_SCREENSHOTS_API_ENDPOINT}/${screenshotId}`,
+      `${SAVED_SCREENSHOTS_API_ENDPOINT}?id=${encodeURIComponent(screenshotId)}`,
       {
         method: "DELETE",
       },

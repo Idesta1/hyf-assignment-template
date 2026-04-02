@@ -86,6 +86,42 @@ module.exports = async function handler(req, res) {
       return;
     }
 
+    if (req.method === "DELETE") {
+      const screenshotId =
+        typeof req.query?.id === "string"
+          ? req.query.id
+          : Array.isArray(req.query?.id)
+            ? req.query.id[0]
+            : "";
+
+      if (!screenshotId) {
+        res.status(400).json({ error: "id is required" });
+        return;
+      }
+
+      const response = await fetch(
+        `${baseUrl}/${encodeURIComponent(screenshotId)}`,
+        {
+          method: "DELETE",
+        },
+      );
+
+      const text = await response.text();
+      const data = parseJsonSafely(text, null);
+
+      if (!response.ok) {
+        const errorMessage =
+          (data && (data.error || data.message)) ||
+          text ||
+          "Could not delete screenshot";
+        res.status(response.status).json({ error: errorMessage });
+        return;
+      }
+
+      res.status(204).end();
+      return;
+    }
+
     res.status(405).json({ error: "Method not allowed" });
   } catch (error) {
     res.status(500).json({ error: error.message || "Unexpected server error" });
