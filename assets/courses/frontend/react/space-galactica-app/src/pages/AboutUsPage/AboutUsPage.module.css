@@ -3,3 +3,17 @@
   width: 100vw;
   height: 100vh;
 }
+.our-values {
+  padding: 40px;
+}
+.values-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 30px;
+}
+.card p {
+  font-size: 11px;
+  margin-top: 10px;
+  opacity: 0.8;
+}
