@@ -32,17 +32,21 @@ const values = [
 
 const OurValues = () => {
   return (
-    <div className="our-values">
-      <div className={styles["values-container"]}>
-        {values.map((value) => (
-          <div key={value.number} className="card">
-            <h1>{value.number}</h1>
-            <h3>{value.title}</h3>
-            <p>{value.description}</p>
-          </div>
-        ))}
+    <section>
+      <h1>Rules To Live By.</h1>
+
+      <div className={styles.ourValues}>
+        <div className={styles.valuesContainer}>
+          {values.map((value) => (
+            <div key={value.number} className={styles.valueCard}>
+              <h2 className={styles.valueNumber}>{value.number}</h2>
+              <h3 className={styles.valueTitle}>{value.title}</h3>
+              <p className={styles.valueDescription}>{value.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
@@ -166,7 +170,7 @@ export const Crew = () => {
           <OurValues />
         </section>
         <section className="card">
-          <h2>The crew</h2>
+          <h2>The Crew</h2>
           <OurCrew />
         </section>
         <section className="card">
