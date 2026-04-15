@@ -4,27 +4,31 @@ import styles from "./AboutUsPage.module.css";
 // After you are finished with creating the page, move the OurValues, OurCrew, OurPartners components into their own files in this folder.
 // Import and use the components from the newly created files.
 const values = [
-  { number: "01",
+  {
+    number: "01",
     title: "Exploration",
     description:
       "We are driven by a deep-seated desire to explore the unknown. We believe that the pursuit of discovery is at the heart of human nature, and we are committed to pushing the boundaries of what is possible.",
   },
-  { number: "02",
+  {
+    number: "02",
     title: "Innovation",
     description:
       "At Galactica, we prioritize cutting-edge technology and innovation. We are constantly evolving our spacecraft, safety protocols, and services to ensure that our travelers experience the most advanced and secure space journeys available.",
-  },  
-  { number: "03",
+  },
+  {
+    number: "03",
     title: "Sustainability",
     description:
       "We are committed to making space exploration sustainable for future generations. Our space missions are designed to minimize environmental impact, both on Earth and in space, and to foster a spirit of responsibility towards our universe.",
-  },  
-  { number: "04",
+  },
+  {
+    number: "04",
     title: "Community",
     description:
       "We believe in the power of collective exploration. Our journeys are not just about reaching new destinations; they are about building a community of space enthusiasts who share a passion for the stars.",
   },
-];  
+];
 
 const OurValues = () => {
   return (
@@ -42,93 +46,65 @@ const OurValues = () => {
   );
 };
 
+const crewMembers = [
+  {
+    id: 1,
+    name: "Captain Sarah Vega",
+    Title: "Astronaut",
+    description:
+      "A former NASA astronaut with over 15 years of experience, Captain Vega leads our missions with unparalleled expertise and a passion for space exploration.",
+    image: "/crew/image-sarah-vega.png",
+  },
+  {
+    id: 2,
+    name: "Dr.Leo Redding",
+    Title: "Chief astroPhysicist",
+    description:
+      "Dr. Redding is a renowned astrophysicist whose groundbreaking research on black holes and dark matter has earned him international acclaim.",
+    image: "/crew/image-leo-redding.png",
+  },
+  {
+    id: 3,
+    name: " Mark Shuttleworth",
+    Title: "Chief Engineer",
+    description:
+      "With his extensive background in aerospace engineering, He is responsible for the state-of-the-art technology that powers our spacecraft. Her innovation ensures that our travelers are always in safe hands.",
+    image: "/crew/image-mark-shuttleworth.png",
+  },
+  {
+    id: 4,
+    name: "Alex Santos",
+    Title: "Mission Specialist",
+    description:
+      " As a mission specialist, Alex’s job is to ensure that every aspect of the journey runs smoothly. With a background in both science and adventure tourism, Alex is the perfect guide for our space travelers.",
+    image: "/crew/image-alex-santos.png",
+  },
+];
+
 const OurCrew = () => {
-  // 🧑🏽‍🚀 Task - Week 1
-  // Create the "Our Crew section".
-  // Use the descriptions provided in /src/pages/AboutUsPage/README.md.
-  // Use the pictures from /public/crew.
-  // Some inspiration ideas can be found in /data/inspiration_about_us.
-  return <p> ADD OUR CREW HERE </p>;
-};
-
-const OurPartners = () => {
-  // 🧑🏽‍🚀 Task - Week 1
-  // Create the "Our Partners section".
-  // Use the descriptions provided in /src/pages/AboutUsPage/README.md.
-  // Use the pictures from /public/business_partners.
-  // Some inspiration ideas can be found in /data/inspiration_about_us.
-  return <p> ADD OUR PARTNERS HERE </p>;
-};
-
-export const Crew = () => {
   return (
-    <div className="fullBGpicture">
-      <main className="mainContent">
-        <h1>About us</h1>
-        <section className="card">
-          <h2>Our Values</h2>
-          <OurValues />
-        </section>
-        <section className="card">
-          <h2>The crew</h2>
-          <OurCrew />
-        </section>
-
-        {/* 🧑🏽‍🚀 Task - Week 1 */}
-        {/* Use the "OurPartners" component here. */}
-      </main>
-    </div>
-  );
-};
-
-export default Crew;
-
-            believe that the pursuit of discovery is at the heart of human
-            nature, and we are committed to pushing the boundaries of what is
-            possible.
-          </p>
-        </div>
-        <div className="card">
-          <h1>02</h1>
-          <h3>Innovation</h3>
-          <p>
-            At Galactica, we prioritize cutting-edge technology and innovation.
-            We are constantly evolving our spacecraft, safety protocols, and
-            services to ensure that our travelers experience the most advanced
-            and secure space journeys available.
-          </p>
-        </div>
-        <div className="card">
-          <h1>03</h1>
-          <h3>Sustainability</h3>
-          <p>
-            We are committed to making space exploration sustainable for future
-            generations. Our space missions are designed to minimize
-            environmental impact, both on Earth and in space, and to foster a
-            spirit of responsibility towards our universe.
-          </p>
-        </div>
-        <div className="card">
-          <h1>04</h1>
-          <h3>Community</h3>
-          <p>
-            We believe in the power of collective exploration. Our journeys are
-            not just about reaching new destinations; they are about building a
-            community of space enthusiasts who share a passion for the stars.
-          </p>
-        </div>
+    <section>
+      <p>
+        Our crew is the heart and soul of Galactica. We are a diverse team of
+        seasoned space explorers, engineers, and visionaries who are united by a
+        common goal: to make space travel accessible and exciting for all.
+      </p>
+      <div className={styles.crewGrid}>
+        {crewMembers.map((member) => (
+          <article key={member.id} className={styles.crewCard}>
+            <img
+              src={member.image}
+              alt={member.name}
+              className={styles.crewImage}
+            />
+            <h3>{member.name}</h3>
+            <h4>{member.Title}</h4>
+            <p>{member.description}</p>
+          </article>
+        ))}
       </div>
-    </div>
+    </section>
   );
-};
-
-const OurCrew = () => {
-  // 🧑🏽‍🚀 Task - Week 1
-  // Create the "Our Crew section".
-  // Use the descriptions provided in /src/pages/AboutUsPage/README.md.
-  // Use the pictures from /public/crew.
-  // Some inspiration ideas can be found in /data/inspiration_about_us.
-  return <p> ADD OUR CREW HERE </p>;
 };
 
 const OurPartners = () => {
