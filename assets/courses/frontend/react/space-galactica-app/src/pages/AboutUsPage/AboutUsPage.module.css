@@ -3,3 +3,123 @@
   width: 100vw;
   height: 100vh;
 }
+
+h1 {
+  font-weight: 200;
+}
+
+h2 {
+  font-size: 21px;
+  opacity: 0.9;
+}
+
+p {
+  font-size: 14px;
+}
+
+.valuesContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background-color: #080c24;
+  padding: 30px;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.valueCard {
+  background: #111;
+  border: 1px solid #2f2f2f;
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.valueNumber {
+  font-size: 3rem;
+  font-weight: 200;
+  line-height: 1;
+  margin: 0 0 8px;
+  color: #ffffff;
+  opacity: 0.9;
+}
+
+.valueTitle {
+  font-size: 1.05rem;
+  margin: 0 0 10px;
+  color: #ffffff;
+}
+
+.valueDescription {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+  color: #d4d4d4;
+}
+
+.crewGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.crewCard {
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 16px;
+  background: #111;
+  color: #fff;
+}
+
+.crewImage {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.partnersGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+  align-items: center;
+}
+
+.partnerLogo {
+  width: 100%;
+  max-width: 150px;
+  display: block;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .valuesContainer {
+    grid-template-columns: 1fr;
+    font-size: 12px;
+  }
+  .valueCard {
+    padding: 14px;
+    font-size: 12px;
+  }
+  .valueNumber {
+    font-size: 1.8rem;
+  }
+
+  .crewGrid {
+    grid-template-columns: 1fr;
+  }
+  .crewCard {
+    padding: 14px;
+    font-size: 12px;
+  }
+  .crewImage {
+    max-width: 180%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .partnerLogo {
+    max-width: 120px;
+    width: 70px;
+  }
+}
