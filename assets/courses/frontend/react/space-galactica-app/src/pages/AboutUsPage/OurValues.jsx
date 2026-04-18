@@ -31,8 +31,7 @@ const OurValues = () => {
   return (
     <section>
       <h1>Rules To Live By.</h1>
-
-      <div className={styles.ourValues}>
+      <div className="ourValues">
         <div className={styles.valuesContainer}>
           {values.map((value) => (
             <div key={value.number} className={styles.valueCard}>
