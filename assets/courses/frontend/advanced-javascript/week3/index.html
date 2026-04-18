@@ -9,18 +9,25 @@
   <body>
     <main>
       <h1>Currency Converter</h1>
+
       <select id="fromCurrency"></select>
       <input type="number" id="amount" placeholder="Enter amount" min="0" />
-      <button id="convert">Convert</button>
+      <div class="actionRow">
+        <button id="convert">Convert</button>
+        <button id="swapCurrencies" type="button" aria-label="Swap currencies">
+          ↕
+        </button>
+      </div>
 
       <select id="toCurrency"></select>
       <input type="number" id="resultInput" />
+      <h1 id="result"></h1>
     </main>
     <footer class="footer">
       <small
         >Coded by
-        <a href="https://www.linkedin.com/in/iglesia-desta-/">Iglesia Desta</a>
-        Mar 2026&copy
+        <a href="https://github.com/Idesta1" target="_blank">Iglesia Desta</a>
+        March 2026&copy
         <a href="https://www.hackyourfuture.dk/" target="_blank"
           ><strong>HackYourFuture</strong></a
         ></small
