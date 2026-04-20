@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./DestinationPage.module.css";
+import PlanetCard from "./PlanetCard";
 
 // 🧑🏽‍🚀 Task - Week 2
 // Move this to its own file in this folder.
@@ -29,32 +30,6 @@ const planetsData = [
     thumbnail: "/destination/image-titan.png",
   },
 ];
-
-const PlanetCard = ({
-  name,
-  description,
-  thumbnail,
-  isSelected,
-  togglePlanetSelection,
-}) => {
-  return (
-    <div className={styles.planetCard}>
-      <img className={styles.planetThumbnail} src={thumbnail} alt="" />
-      <div className={styles.planetDescription}>
-        <h2>
-          {name.toUpperCase()} {isSelected ? "- SELECTED" : ""}
-        </h2>
-        <p>{description}</p>
-      </div>
-      <button
-        className="roundButton"
-        onClick={() => togglePlanetSelection(name, thumbnail)}
-      >
-        {isSelected ? "REMOVE FROM WISHLIST" : "ADD TO WISHLIST"}
-      </button>
-    </div>
-  );
-};
 
 const PlanetsWishlistItem = ({ name, thumbnail, onRemove }) => {
   return (

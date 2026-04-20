@@ -5,7 +5,7 @@
 }
 
 .planetCard {
-  border: 1px solid var(--border-color);
+  border: 1px solid green;
   max-width: 70%;
   margin: var(--spacing-20) 0;
   display: flex;
@@ -77,7 +77,7 @@
   font-size: small;
 }
 
-.addWishlistItem input, 
+.addWishlistItem input,
 .addWishlistItem select {
   height: 30px;
   margin-block-end: var(--spacing-20);

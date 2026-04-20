@@ -1,7 +1,8 @@
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+  --font-mono:
+    ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
     "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
     "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
@@ -11,7 +12,7 @@
 
   --primary-background-color: #000;
   --primary-text-color: #fff;
-  --border-color: #eee;
+  --border-color: rgb(83, 255, 83);
   --card-bg-color: rgba(100, 100, 100, 0.3);
 
   --primary-glow: conic-gradient(
@@ -87,7 +88,6 @@ body {
   overflow-x: hidden;
 }
 
-
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -103,12 +103,19 @@ a {
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin-block-end: var(--spacing-08);
   color: var(--primary-text-color);
 }
 
-p, b, i {
+p,
+b,
+i {
   margin-block-end: var(--spacing-08);
 }
 
@@ -135,7 +142,6 @@ button {
   padding-block-start: var(--header-height);
   color: #fff;
 }
-
 
 .card {
   position: relative;
@@ -172,7 +178,6 @@ button {
   font-weight: 200;
   letter-spacing: 4px;
 }
-
 .roundButton {
   padding: var(--spacing-08);
   height: 100px;
@@ -181,18 +186,33 @@ button {
   min-width: 100px;
   line-height: 1.2;
   cursor: pointer;
-  background-color: white;
-  color: black;
+  background-color: #00ff77;
+  border: none;
+  color: #000000;
   border-radius: 50%;
-  font-size: var(--font-size-3xs);
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.5px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  word-wrap: break-word;
+  word-break: break-word;
   overflow-wrap: break-word;
+  transition: 0.3s;
+  cursor: pointer;
+  /* Initial glow */
+  box-shadow:
+    0 0 10px #00ff77,
+    0 0 40px #00ff77;
+}
+
+.roundButton:hover {
+  /* Intensified glow on hover */
+  box-shadow:
+    0 0 20px #00ff77,
+    0 0 60px #00ff77;
+  transform: scale(1.05);
 }
 
 .fullBGpicture {
@@ -206,7 +226,7 @@ button {
 
 .fullBGpicture::before {
   content: "";
-  background: url('/destination/background-destination-desktop.jpg') no-repeat;
+  background: url("/destination/background-destination-desktop.jpg") no-repeat;
   background-size: cover;
   background-position: center;
   background-color: #000;
