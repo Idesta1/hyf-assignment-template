@@ -1,6 +1,6 @@
 import classNames from "classnames";
-import { Link } from "react-router-dom";
 import styles from "./Navbar.module.css";
+import { Link } from "react-router-dom";
 
 export const NavItem = ({ title, link, isActive }) => {
   return (
