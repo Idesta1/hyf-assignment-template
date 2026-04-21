@@ -2,8 +2,6 @@ import { useState } from "react";
 import styles from "./DestinationPage.module.css";
 import PlanetCard from "./PlanetCard";
 
-// 🧑🏽‍🚀 Task - Week 2
-// Move this to its own file in this folder.
 const planetsData = [
   {
     name: "Europa",
@@ -68,16 +66,27 @@ export const Destinations = () => {
     );
   };
 
+  const wishlistCount = planetsWishlist.length;
+
   return (
     <div className="fullBGpicture">
       <main className="mainContent">
-        <h1>Travel destinations</h1>
+        <h1>Travel Destinations</h1>
         <section className="card">
-          <h2>Wishlist</h2>
+          <h2>WishList</h2>
 
-          <p>No planets in your wishlist :(</p>
-          {/* 🧑🏽‍🚀 Use a variable to display the number of wishlist planets:  */}
-          <p>You have X planets in your wishlist</p>
+          {wishlistCount === 0 ? (
+            <p>
+              No planets in your wishlist{" "}
+              <span className={styles.astroIcon}>👩🏽‍🚀</span>
+            </p>
+          ) : (
+            <p>
+              You have{" "}
+              <strong className={styles.wishlistCount}>{wishlistCount}</strong>{" "}
+              planets in your wishlist
+            </p>
+          )}
 
           {/* 🧑🏽‍🚀 Task - Week 3 */}
           {/* Use the AddWishlistItem component here. */}
@@ -91,7 +100,7 @@ export const Destinations = () => {
           */}
         </section>
         <section className="card">
-          <h2>Possible destinations</h2>
+          <h2>Possible Destinations</h2>
           {planetsData.map((planet) => (
             <PlanetCard
               key={planet.name}

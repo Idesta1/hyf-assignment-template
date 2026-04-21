@@ -12,7 +12,7 @@
 
   --primary-background-color: #000;
   --primary-text-color: #fff;
-  --border-color: rgb(83, 255, 83);
+  --border-color: #000051;
   --card-bg-color: rgba(100, 100, 100, 0.3);
 
   --primary-glow: conic-gradient(
@@ -186,9 +186,9 @@ button {
   min-width: 100px;
   line-height: 1.2;
   cursor: pointer;
-  background-color: #00ff77;
+  background-color: #ffce48;
   border: none;
-  color: #000000;
+  color: #444242;
   border-radius: 50%;
   font-size: 10px;
   font-weight: 700;
@@ -203,15 +203,15 @@ button {
   cursor: pointer;
   /* Initial glow */
   box-shadow:
-    0 0 10px #00ff77,
-    0 0 40px #00ff77;
+    0 0 10px #ffce48,
+    0 0 40px #ffce48;
 }
 
 .roundButton:hover {
   /* Intensified glow on hover */
   box-shadow:
-    0 0 20px #00ff77,
-    0 0 60px #00ff77;
+    0 0 20px #ffce48,
+    0 0 60px #ffce48;
   transform: scale(1.05);
 }
 
@@ -250,4 +250,17 @@ button {
   flex-flow: column;
   justify-content: space-between;
   min-height: 100vh;
+}
+
+@media (max-width: 600px) {
+  .roundButton {
+    padding: var(--spacing-04);
+    height: 45px;
+    width: 45px;
+    min-height: 45px;
+    min-width: 45px;
+    border-radius: 4px;
+    font-size: 10px;
+    padding: var(--spacing-04);
+  }
 }

@@ -12,7 +12,8 @@ const PlanetCard = ({
       <img className={styles.planetThumbnail} src={thumbnail} alt="" />
       <div className={styles.planetDescription}>
         <h2>
-          {name.toUpperCase()} {isSelected ? "- SELECTED" : ""}
+          <span style={{ letterSpacing: "0.08em" }}>{name.toUpperCase()}</span>
+          {isSelected ? "- SELECTED" : ""}
         </h2>
         <p>{description}</p>
       </div>
