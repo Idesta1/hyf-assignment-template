@@ -16,7 +16,9 @@
   padding: var(--spacing-08) 0;
 }
 
-.footer p, .footer a, .footer li {
+.footer p,
+.footer a,
+.footer li {
   color: #000;
   font-size: medium;
   font-weight: 200;
@@ -41,5 +43,25 @@
 }
 
 .footerList li {
+  padding-block: var(--spacing-04);
+}
+.footerListItem {
+  padding-block: var(--spacing-04);
+}
+
+.footerListItem img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  display: block;
+}
+
+.pages ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pages li {
   padding-block: var(--spacing-04);
 }

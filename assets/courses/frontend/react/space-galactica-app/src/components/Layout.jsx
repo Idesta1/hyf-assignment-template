@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { Navbar } from "./Navbar.jsx";
+import { Footer } from "./Footer.jsx";
 
 export const metadata = {
   title: "Galactica",
@@ -11,10 +12,9 @@ export const RootLayout = () => {
     <div className="inter">
       <Navbar />
       <Outlet />
-      {/* 🧑🏽‍🚀 Task - Week 1 */}
-      {/* Import and use the Footer component here. */}
+      <Footer />
     </div>
   );
-}
+};
 
 export default RootLayout;
