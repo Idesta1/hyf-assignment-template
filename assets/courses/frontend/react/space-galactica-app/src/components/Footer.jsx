@@ -1,8 +1,9 @@
 import { useLocation, Link } from "react-router-dom";
 import styles from "./Footer.module.css";
 import { SocialMediaItem } from "./SocialMediaItem";
+import { pageLinks } from "./pageLinks";
 
-const socialMediaLItems = [
+const socialMedialItems = [
   {
     id: 1,
     title: "Facebook",
@@ -45,22 +46,18 @@ export const Footer = () => {
       <div className={styles.pages}>
         <h3>Pages</h3>
         <ul>
-          <li>
-            <Link to="/about_us">About Us</Link>
-          </li>
-          <li>
-            <Link to="/destination">Destination</Link>
-          </li>
-          <li>
-            <Link to="/nasa_collaboration">NASA Collaboration</Link>
-          </li>
+          {pageLinks.map((item) => (
+            <li key={item.link}>
+              <Link to={item.link}>{item.label}</Link>
+            </li>
+          ))}
         </ul>
       </div>
       {/*Docs for the Link: https://reactrouter.com/api/components/Link#link.*/}
       <div className={styles.footerLinks}>
         <h3>Follow us</h3>
         <ul className={styles.footerList}>
-          {socialMediaLItems.map((item) => (
+          {socialMedialItems.map((item) => (
             <SocialMediaItem
               key={item.id}
               title={item.title}

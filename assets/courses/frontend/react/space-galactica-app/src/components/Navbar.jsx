@@ -3,21 +3,7 @@ import { Planet } from "../icons/Planet";
 import { Badge } from "./Badge";
 import styles from "./Navbar.module.css";
 import { NavItem } from "./NavItem";
-
-const navbarItems = [
-  {
-    title: "01 ABOUT",
-    link: "/about_us",
-  },
-  {
-    title: "02 DESTINATION",
-    link: "/destination",
-  },
-  {
-    title: "03 NASA COLLABORATION",
-    link: "/nasa_collaboration",
-  },
-];
+import { pageLinks } from "./pageLinks";
 
 export const Navbar = () => {
   const currentPath = useLocation().pathname;
@@ -33,7 +19,7 @@ export const Navbar = () => {
       <nav className={styles.navbar}>
         <div className={styles.navbarBG} />
         <ul className={styles.navbarList}>
-          {navbarItems.map((item) => (
+          {pageLinks.map((item) => (
             <NavItem
               key={item.link}
               title={item.title}

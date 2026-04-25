@@ -82,8 +82,10 @@ export const Destinations = () => {
             </p>
           ) : (
             <p>
-              You have{" "}
-              <strong className={styles.wishlistCount}>{wishlistCount}</strong>{" "}
+              You have&nbsp;
+              <strong className={styles.wishlistCount}>
+                {wishlistCount}
+              </strong>{" "}
               planets in your wishlist
             </p>
           )}
