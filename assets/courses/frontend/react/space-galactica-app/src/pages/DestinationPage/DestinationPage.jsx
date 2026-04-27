@@ -33,7 +33,11 @@ const planetsData = [
 const PlanetsWishlistItem = ({ name, thumbnail, onRemove }) => {
   return (
     <div className={styles.wishlistItem}>
-      <img className={styles.wishlistItemThumbnail} src={thumbnail} alt="" />
+      <img
+        className={styles.wishlistItemThumbnail}
+        src={thumbnail}
+        alt={name}
+      />
       <b>{name.toUpperCase()}</b>
       <button onClick={onRemove}>remove</button>
     </div>
