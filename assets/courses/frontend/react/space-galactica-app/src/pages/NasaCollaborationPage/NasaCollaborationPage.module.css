@@ -4,9 +4,7 @@
   height: 100vh;
 }
 
-
 .nasaPicOfTheDayImg {
-  width: auto;
-  height: 400px;
-
+  width: 50%;
+  height: 500px;
 }

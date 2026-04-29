@@ -4,11 +4,14 @@ import styles from "./NasaCollaborationPage.module.css";
 // Read "/app/nasa_collaboration/README.md" for more info about the API_KEY
 // You need a proper API_KEY for the requests to work
 const API_KEY = import.meta.env.VITE_NASA_API_KEY;
-const currentDate = new Date().toISOString().split("T")[0];
+const yesterday = new Date();
+yesterday.setDate(yesterday.getDate() - 1);
+const latestDate = yesterday.toISOString().split("T")[0];
+const MAX_ROVER_PHOTOS = 1;
 
 const NASA_URLs = {
   astronomyPicOfTheDay: `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`,
-  marsRoverPhoto: `https://rovers.nebulum.one/api/v1/rovers/curiosity/photos?earth_date=${currentDate}&api_key=${API_KEY}`,
+  marsRoverPhoto: `https://rovers.nebulum.one/api/v1/rovers/curiosity/photos?earth_date=${latestDate}&api_key=${API_KEY}`,
 };
 
 export const NasaCollaboration = () => {
@@ -26,7 +29,7 @@ export const NasaCollaboration = () => {
         const roverPhotoResponse = await fetch(NASA_URLs.marsRoverPhoto);
         const data = await roverPhotoResponse.json();
 
-        setRoverPhoto(data.photos || []);
+        setRoverPhoto(data.photos.slice(0, MAX_ROVER_PHOTOS) || []);
       } catch (error) {
         setRoverError("Failed to fetch rover photos. Please try again later.");
       } finally {
@@ -42,7 +45,6 @@ export const NasaCollaboration = () => {
         (response) => response.json(),
       );
       setDailyImg(dailyImgResponse);
-      console.log(dailyImgResponse);
     };
 
     fetchDailyImg();
@@ -64,21 +66,23 @@ export const NasaCollaboration = () => {
         </section>
         <section className="card">
           <h2>Rover Photos</h2>
-          <p>{currentDate}</p>
+          <p>{latestDate}</p>
           {isLoadingRoverPhotos ? (
             <p>Loading rover photos...</p>
           ) : roverError ? (
             <p>{roverError}</p>
           ) : roverPhoto.length === 0 ? (
-            <p>No rover photos available for {currentDate}.</p>
+            <p>No rover photos available for {latestDate}.</p>
           ) : (
             roverPhoto.map((photo) => (
-              <RoverPhoto
-                key={photo.id}
-                src={photo.img_src}
-                date={photo.earth_date}
-                roverName={photo.rover.name}
-              />
+              <div key={photo.id} className={styles.roverPhotoContainer}>
+                <img
+                  className={styles.roverPhoto}
+                  src={photo.img_src}
+                  alt={`Rover ${photo.rover.name} - ${photo.earth_date}`}
+                />
+                <p>{`Rover: ${photo.rover.name}, Date: ${photo.earth_date}`}</p>
+              </div>
             ))
           )}
           <>
