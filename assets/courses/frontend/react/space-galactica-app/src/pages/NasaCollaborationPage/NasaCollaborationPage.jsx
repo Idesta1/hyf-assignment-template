@@ -3,7 +3,7 @@ import styles from "./NasaCollaborationPage.module.css";
 
 // Read "/app/nasa_collaboration/README.md" for more info about the API_KEY
 // You need a proper API_KEY for the requests to work
-const API_KEY = "WIq797DkI328Z1ZmTqrxcHetUfAz7g1TyB8zqHJp";
+const API_KEY = import.meta.env.VITE_NASA_API_KEY;
 const currentDate = new Date().toISOString().split("T")[0];
 
 const NASA_URLs = {
