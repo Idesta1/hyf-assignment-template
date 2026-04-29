@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./NasaCollaborationPage.module.css";
+import RoverPhoto from "../../components/RoverPhoto";
 
 // Read "/app/nasa_collaboration/README.md" for more info about the API_KEY
 // You need a proper API_KEY for the requests to work
@@ -19,6 +20,8 @@ export const NasaCollaboration = () => {
   const [roverPhoto, setRoverPhoto] = useState([]);
   const [isLoadingRoverPhotos, setIsLoadingRoverPhotos] = useState(true);
   const [roverError, setRoverError] = useState("");
+  const [isLoadingDailyImg, setIsLoadingDailyImg] = useState(true);
+  const [dailyImgError, setDailyImgError] = useState("");
 
   useEffect(() => {
     const fetchRoverPhotos = async () => {
@@ -38,13 +41,20 @@ export const NasaCollaboration = () => {
     };
     fetchRoverPhotos();
 
-    // 🧑🏽‍🚀 Task - Week 3
-    // Fetch the extra data for NASA_URLs.astronomyPicOfTheDay and save it to the dailyImg state variable.
     const fetchDailyImg = async () => {
-      const dailyImgResponse = await fetch(NASA_URLs.astronomyPicOfTheDay).then(
-        (response) => response.json(),
-      );
-      setDailyImg(dailyImgResponse);
+      try {
+        setIsLoadingDailyImg(true);
+        setDailyImgError("");
+
+        const dailyImgResponse = await fetch(NASA_URLs.astronomyPicOfTheDay).then(
+          (response) => response.json(),
+        );
+        setDailyImg(dailyImgResponse);
+      } catch (error) {
+        setDailyImgError("Failed to fetch astronomy picture. Please try again later.");
+      } finally {
+        setIsLoadingDailyImg(false);
+      }
     };
 
     fetchDailyImg();
@@ -53,47 +63,64 @@ export const NasaCollaboration = () => {
   return (
     <div className="fullBGpicture">
       <main className="mainContent">
-        <h1>Collaboration with NASA</h1>
-        <section className="card">
-          <h2>Astronomy Picture of the day</h2>
-          <p>{dailyImg.title}</p>
-          <img
-            className={styles.nasaPicOfTheDayImg}
-            src={dailyImg.url}
-            alt={dailyImg.title}
-          />
-          <p>{dailyImg.explanation}</p>
-        </section>
-        <section className="card">
-          <h2>Rover Photos</h2>
-          <p>{latestDate}</p>
-          {isLoadingRoverPhotos ? (
-            <p>Loading rover photos...</p>
-          ) : roverError ? (
-            <p>{roverError}</p>
-          ) : roverPhoto.length === 0 ? (
-            <p>No rover photos available for {latestDate}.</p>
-          ) : (
-            roverPhoto.map((photo) => (
-              <div key={photo.id} className={styles.roverPhotoContainer}>
-                <img
-                  className={styles.roverPhoto}
-                  src={photo.img_src}
-                  alt={`Rover ${photo.rover.name} - ${photo.earth_date}`}
-                />
-                <p>{`Rover: ${photo.rover.name}, Date: ${photo.earth_date}`}</p>
-              </div>
-            ))
-          )}
-          <>
-            {/* 🧑🏽‍🚀 Task - Week 3 */}
-            {/* Create a react component for the <RoverPhoto />, which should accept the following props: */}
-            {/* 1. src: source of the img; */}
-            {/* 2. date: earth_date data coming from the API; */}
-            {/* 3. roverName: will be in the rover object. */}
+        <h1 className={styles.pageTitle}>Collaboration with NASA</h1>
 
-            {/* If you don't know how the data looks like you can log it out to the console and investigate in the browser's devtools. */}
-          </>
+        <section className={`card ${styles.nasaCard}`}>
+          <h2 className={styles.sectionTitle}>Astronomy Picture of the day</h2>
+
+          {isLoadingDailyImg ? (
+            <p className={styles.statusText}>Loading astronomy picture...</p>
+          ) : dailyImgError ? (
+            <p className={styles.errorText}>{dailyImgError}</p>
+          ) : (
+            <>
+              <p className={styles.mediaTitle}>{dailyImg.title}</p>
+
+              <div className={styles.apodFrame}>
+                {dailyImg.media_type === "image" ? (
+                  <img
+                    className={styles.nasaPicOfTheDayImg}
+                    src={dailyImg.url}
+                    alt={dailyImg.title}
+                  />
+                ) : dailyImg.media_type === "video" ? (
+                  <iframe
+                    className={styles.apodVideo}
+                    src={dailyImg.url}
+                    title={dailyImg.title}
+                    allow="fullscreen"
+                  />
+                ) : (
+                  <p className={styles.statusText}>
+                    Today&apos;s NASA media is not an image.
+                  </p>
+                )}
+              </div>
+
+              <p className={styles.apodDescription}>{dailyImg.explanation}</p>
+            </>
+          )}
+        </section>
+
+        <section className={`card ${styles.nasaCard}`}>
+          <h2 className={styles.sectionTitle}>Rover Photos</h2>
+          <p className={styles.dateBadge}>{latestDate}</p>
+
+          {isLoadingRoverPhotos ? (
+            <p className={styles.statusText}>Loading rover photos...</p>
+          ) : roverError ? (
+            <p className={styles.errorText}>{roverError}</p>
+          ) : roverPhoto.length === 0 ? (
+            <p className={styles.statusText}>
+              No rover photos available for {latestDate}.
+            </p>
+          ) : (
+            <RoverPhoto
+              src={roverPhoto[0]?.img_src}
+              date={roverPhoto[0]?.earth_date}
+              roverName={roverPhoto[0]?.rover?.name}
+            />
+          )}
         </section>
       </main>
     </div>

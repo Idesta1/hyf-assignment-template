@@ -1,10 +1,93 @@
-.app {
-  background-color: black;
-  width: 100vw;
-  height: 100vh;
+:root {
+  --nasa-border: rgba(255, 206, 72, 0.35);
+  --nasa-surface: rgba(7, 12, 28, 0.72);
+  --nasa-text-soft: #d7deff;
+  --nasa-text-strong: #ffffff;
+  --nasa-accent: #ffce48;
+}
+
+.pageTitle {
+  font-weight: 200;
+  letter-spacing: 1px;
+  margin-bottom: 1.2rem;
+  color: var(--nasa-text-strong);
+}
+
+.nasaCard {
+  border: 1px solid var(--nasa-border);
+  border-radius: 16px;
+  background: linear-gradient(
+    160deg,
+    var(--nasa-surface),
+    rgba(17, 24, 50, 0.65)
+  );
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.sectionTitle {
+  font-size: 1.35rem;
+  font-weight: 400;
+  margin-bottom: 0.8rem;
+  color: var(--nasa-text-strong);
+}
+
+.mediaTitle {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--nasa-accent);
+}
+
+.apodFrame {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #02050f;
 }
 
 .nasaPicOfTheDayImg {
-  width: 50%;
-  height: 500px;
+  width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.apodDescription {
+  margin-top: 1rem;
+  line-height: 1.7;
+  color: var(--nasa-text-soft);
+  font-size: 0.98rem;
+}
+
+.dateBadge {
+  display: inline-block;
+  margin: 0.3rem 0 1rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255, 206, 72, 0.16);
+  border: 1px solid rgba(255, 206, 72, 0.45);
+  color: #ffe7a3;
+  font-size: 0.85rem;
+}
+
+.statusText {
+  color: var(--nasa-text-soft);
+}
+
+.errorText {
+  color: #ff9b9b;
+}
+
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 1.15rem;
+  }
+
+  .nasaPicOfTheDayImg {
+    max-height: 320px;
+  }
+
+  .apodDescription {
+    font-size: 0.73rem;
+  }
 }
