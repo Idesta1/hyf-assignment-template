@@ -1,7 +1,7 @@
-import { useState } from "react";
 import styles from "./DestinationPage.module.css";
 import PlanetCard from "./PlanetCard";
 import { AddWishlistItem } from "./AddWishlistItem";
+import { useWishlist } from "../../contexts/WishlistContext.jsx";
 
 const planetsData = [
   {
@@ -45,33 +45,14 @@ const PlanetsWishlistItem = ({ name, thumbnail, onRemove }) => {
 };
 
 export const Destinations = () => {
-  const [planetsWishlist, setPlanetsWishlist] = useState([]);
-
-  const isPlanetInWishlist = (planetName) => {
-    return planetsWishlist.some((planet) => planet.name === planetName);
-  };
-
-  const togglePlanetSelection = (name, thumbnail) => {
-    if (isPlanetInWishlist(name)) {
-      removePlanetFromWishlist(name);
-    } else {
-      addPlanetToWishlist(name, thumbnail);
-    }
-  };
-
-  const addPlanetToWishlist = (name, thumbnail) => {
-    setPlanetsWishlist((prevWishlist) => [
-      ...prevWishlist,
-      { name, thumbnail },
-    ]);
-  };
-  const removePlanetFromWishlist = (name) => {
-    setPlanetsWishlist((prevWishlist) =>
-      prevWishlist.filter((planet) => planet.name !== name),
-    );
-  };
-
-  const wishlistCount = planetsWishlist.length;
+  const {
+    planetsWishlist,
+    wishlistCount,
+    isPlanetInWishlist,
+    togglePlanetSelection,
+    addPlanetToWishlist,
+    removePlanetFromWishlist,
+  } = useWishlist();
 
   return (
     <div className="fullBGpicture">
@@ -123,8 +104,3 @@ export const Destinations = () => {
 };
 
 export default Destinations;
-
-// 🧑🏽‍🚀 Task - Week 4 - part 2
-// Hate to break it to you, but you will have to make some changes to the code you already wrote.
-// Now that you have context, grab and use the context data in this.
-// You will need to replace some of the variables and functions with the ones from the context.
