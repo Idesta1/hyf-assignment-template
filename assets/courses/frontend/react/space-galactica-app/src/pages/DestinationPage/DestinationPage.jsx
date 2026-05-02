@@ -75,15 +75,16 @@ export const Destinations = () => {
           )}
 
           <AddWishlistItem onAddWishlistItem={addPlanetToWishlist} />
-
-          {planetsWishlist.map((planet) => (
-            <PlanetsWishlistItem
-              key={planet.name}
-              name={planet.name}
-              thumbnail={planet.thumbnail}
-              onRemove={() => removePlanetFromWishlist(planet.name)}
-            />
-          ))}
+          <div className={styles.wishlistList}>
+            {planetsWishlist.map((planet) => (
+              <PlanetsWishlistItem
+                key={planet.name}
+                name={planet.name}
+                thumbnail={planet.thumbnail}
+                onRemove={() => removePlanetFromWishlist(planet.name)}
+              />
+            ))}
+          </div>
         </section>
         <section className="card">
           <h2>Possible Destinations</h2>
