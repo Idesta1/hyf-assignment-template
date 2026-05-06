@@ -22,6 +22,7 @@ export const AddWishlistItem = ({ onAddWishlistItem }) => {
       <input
         id="customWishlist"
         type="text"
+        placeholder="Enter planet name.."
         value={customWishlistItem}
         onChange={(e) => setCustomWishlistItem(e.target.value)}
       />
@@ -36,7 +37,12 @@ export const AddWishlistItem = ({ onAddWishlistItem }) => {
         <option value="/destination/image-moon.png">MOON</option>
         <option value="/destination/image-titan.png">TITAN</option>
       </select>
-      <button onClick={onAddItemPressed}>ADD CUSTOM</button>
+      <button
+        className={styles.addWishlistItemButton}
+        onClick={onAddItemPressed}
+      >
+        ADD CUSTOM
+      </button>
     </div>
   );
 };
